@@ -1,0 +1,2975 @@
+<!DOCTYPE html>
+<html lang="ml" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Joslet PJ • B.Ed. Special Education (HI &amp; ID) — Royal EdTech Study Portal</title>
+
+  <!-- Premium Typography: Plus Jakarta Sans + Noto Sans Malayalam + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Malayalam:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===================================================================== */
+    /* 1. ROYAL UNREAL ENGINE / LTX-2.5 / EDTECH DESIGN SYSTEM               */
+    /* ===================================================================== */
+    :root {
+      --user-font-size: 22px;
+      --base-size: 22px;
+      --print-font-size: 13.5px;
+      --font-sans: 'Plus Jakarta Sans', 'Noto Sans Malayalam', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 22px;
+      --radius-xl: 30px;
+    }
+
+    html[data-theme="dark"] {
+      --bg-base: #06080f;
+      --bg-surface: #0d121f;
+      --bg-elevated: #141c2f;
+      --bg-glass: rgba(16, 23, 41, 0.78);
+      --bg-card: rgba(19, 27, 46, 0.72);
+      --border-subtle: rgba(255, 255, 255, 0.09);
+      --border-strong: rgba(255, 255, 255, 0.18);
+      --border-royal: rgba(245, 158, 11, 0.45);
+      --border-cyan: rgba(56, 189, 248, 0.4);
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+      --accent-gold: #f59e0b;
+      --accent-cyan: #38bdf8;
+      --accent-emerald: #10b981;
+      --accent-violet: #818cf8;
+      --accent-rose: #f43f5e;
+      --shadow-card: 0 14px 34px -8px rgba(0, 0, 0, 0.65), 0 0 35px -12px rgba(56, 189, 248, 0.12);
+      --mesh-grad:
+        radial-gradient(circle at 12% 12%, rgba(245, 158, 11, 0.09) 0%, transparent 38%),
+        radial-gradient(circle at 88% 18%, rgba(56, 189, 248, 0.11) 0%, transparent 42%),
+        radial-gradient(circle at 50% 88%, rgba(99, 102, 241, 0.09) 0%, transparent 48%);
+    }
+
+    html[data-theme="light"] {
+      --bg-base: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-elevated: #f1f5f9;
+      --bg-glass: rgba(255, 255, 255, 0.92);
+      --bg-card: #ffffff;
+      --border-subtle: #e2e8f0;
+      --border-strong: #cbd5e1;
+      --border-royal: #d97706;
+      --border-cyan: #0284c7;
+      --text-primary: #0f172a;
+      --text-secondary: #1e293b;
+      --text-muted: #475569;
+      --accent-gold: #b45309;
+      --accent-cyan: #0369a1;
+      --accent-emerald: #047857;
+      --accent-violet: #4338ca;
+      --accent-rose: #be123c;
+      --shadow-card: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
+      --mesh-grad:
+        radial-gradient(circle at 12% 12%, rgba(245, 158, 11, 0.06) 0%, transparent 38%),
+        radial-gradient(circle at 88% 18%, rgba(2, 132, 199, 0.06) 0%, transparent 42%);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      font-size: var(--user-font-size);
+      scroll-behavior: smooth;
+      transition: font-size 0.15s ease;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-base);
+      background-image: var(--mesh-grad);
+      background-attachment: fixed;
+      color: var(--text-primary);
+      min-height: 100vh;
+      line-height: 1.65;
+      overflow-x: hidden;
+      padding-bottom: 5.5rem;
+    }
+
+    /* Full-Screen Workspace — Zero 2-inch Side Margins */
+    .container {
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 0.75rem 0.9rem;
+    }
+
+    /* ===================================================================== */
+    /* TOP-LEFT MENU BUTTON & TOP NAVIGATION DRAWER (MATCHING A1_U1_HUB)     */
+    /* ===================================================================== */
+    .top-menu-btn {
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 800;
+      padding: 7px 15px;
+      border-radius: 999px;
+      border: 2px solid var(--accent-cyan);
+      background-color: var(--bg-elevated);
+      color: var(--accent-cyan);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.18s ease;
+      flex-shrink: 0;
+    }
+
+    .top-menu-btn:hover, .top-menu-btn.active {
+      background-color: var(--accent-cyan);
+      color: #06080f;
+    }
+
+    .top-drawer-panel {
+      position: fixed;
+      top: 64px;
+      left: 14px;
+      right: 14px;
+      max-width: calc(100vw - 28px);
+      max-height: 80vh;
+      overflow-y: auto;
+      z-index: 440;
+      background-color: var(--bg-surface);
+      border: 2px solid var(--accent-cyan);
+      border-radius: 16px;
+      padding: 16px 20px;
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.75);
+      display: none;
+    }
+
+    .top-drawer-panel.open {
+      display: block;
+    }
+
+    .drawer-course-group {
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .drawer-course-group:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .drawer-course-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--accent-gold);
+      margin-bottom: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .tab-btn {
+      font-family: var(--font-sans);
+      font-size: 13.5px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 10px;
+      border: 1.5px solid var(--border-strong);
+      background-color: var(--bg-elevated);
+      color: var(--text-secondary);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .tab-btn:hover, .tab-btn.active {
+      background-color: var(--accent-cyan);
+      color: #06080f;
+      border-color: var(--accent-cyan);
+    }
+
+    /* ===================================================================== */
+    /* 2. ROYAL TOP HEADER, AUTHOR SIGNATURE & STUDENT GREETING              */
+    /* ===================================================================== */
+    .royal-header {
+      padding: 0.6rem 0 1.1rem 0;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 1.1rem;
+    }
+
+    .header-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .brand-cluster {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .royal-crest {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 45%, #0284c7 100%);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: -0.03em;
+      box-shadow: 0 6px 20px rgba(245, 158, 11, 0.3);
+      flex-shrink: 0;
+    }
+
+    .brand-titles h1 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      line-height: 1.25;
+    }
+
+    .author-subline {
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+      font-weight: 600;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 0.15rem;
+    }
+
+    .author-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.28rem;
+      background: rgba(245, 158, 11, 0.14);
+      border: 1px solid var(--border-royal);
+      color: var(--accent-gold);
+      padding: 0.1rem 0.55rem;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.68rem;
+    }
+
+    .header-right-controls {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .student-welcome-chip {
+      background: var(--bg-elevated);
+      border: 1.5px solid var(--border-cyan);
+      color: var(--text-primary);
+      padding: 0.36rem 0.72rem;
+      border-radius: 999px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.2s ease;
+    }
+
+    .student-welcome-chip:hover {
+      transform: translateY(-1px);
+      border-color: var(--accent-gold);
+    }
+
+    .top-btn {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-strong);
+      color: var(--text-primary);
+      padding: 0.36rem 0.68rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.68rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: all 0.18s ease;
+    }
+
+    .top-btn:hover {
+      border-color: var(--accent-cyan);
+      transform: translateY(-1px);
+    }
+
+    .top-btn.gold {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      color: #0f172a;
+      border-color: #f59e0b;
+    }
+
+    /* ===================================================================== */
+    /* 3. MASTER COUNTDOWN & FULL EXAM TIMETABLE STRIP                       */
+    /* ===================================================================== */
+    .hero-countdown-panel {
+      background: var(--bg-card);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1.5px solid var(--border-subtle);
+      border-left: 4px solid var(--accent-gold);
+      border-radius: var(--radius-lg);
+      padding: 0.85rem 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      box-shadow: var(--shadow-card);
+    }
+
+    .countdown-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .live-beacon {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 12px #10b981;
+      animation: pulseBeacon 1.6s infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes pulseBeacon {
+      0%, 100% { transform: scale(0.95); opacity: 0.85; }
+      50% { transform: scale(1.25); opacity: 1; }
+    }
+
+    .cd-tag {
+      font-size: 0.62rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent-gold);
+    }
+
+    .cd-main-title {
+      font-size: 0.86rem;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+
+    .cd-sub-note {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+
+    .ticker-group {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-mono);
+    }
+
+    .ticker-box {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-sm);
+      padding: 0.35rem 0.55rem;
+      min-width: 54px;
+      text-align: center;
+    }
+
+    .ticker-num {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--accent-cyan);
+      display: block;
+      line-height: 1.1;
+    }
+
+    .ticker-unit-lbl {
+      font-size: 0.55rem;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-family: var(--font-sans);
+      font-weight: 700;
+    }
+
+    /* ===================================================================== */
+    /* 4. SEARCH & FILTER BAR                                                */
+    /* ===================================================================== */
+    .controls-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .search-wrapper {
+      flex: 1;
+      min-width: 250px;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      background: var(--bg-surface);
+      border: 1.5px solid var(--border-strong);
+      color: var(--text-primary);
+      padding: 0.58rem 0.9rem 0.58rem 2.2rem;
+      border-radius: var(--radius-md);
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 600;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .search-input:focus {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.82rem;
+      pointer-events: none;
+    }
+
+    .filter-pills {
+      display: flex;
+      align-items: center;
+      gap: 0.38rem;
+      overflow-x: auto;
+      padding-bottom: 2px;
+      scrollbar-width: none;
+    }
+
+    .filter-pills::-webkit-scrollbar { display: none; }
+
+    .filter-pill {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-strong);
+      color: var(--text-secondary);
+      padding: 0.38rem 0.72rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.68rem;
+      font-weight: 800;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .filter-pill.active, .filter-pill:hover {
+      background: var(--accent-cyan);
+      color: #ffffff;
+      border-color: var(--accent-cyan);
+    }
+
+    /* ===================================================================== */
+    /* 5. SUBJECT STREAM CARDS & UNIT RESOURCE TILES                         */
+    /* ===================================================================== */
+    .subjects-stream {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .subject-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1.5px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1rem 1.1rem;
+      box-shadow: var(--shadow-card);
+      transition: all 0.22s ease;
+    }
+
+    .subject-card:hover {
+      border-color: var(--border-cyan);
+    }
+
+    .subject-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.8rem;
+      cursor: pointer;
+    }
+
+    .subject-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .code-pill {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 0.15rem 0.52rem;
+      border-radius: 6px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent-cyan);
+      border: 1px solid var(--border-cyan);
+    }
+
+    .exam-countdown-chip {
+      background: rgba(245, 158, 11, 0.14);
+      border: 1px solid var(--border-royal);
+      color: var(--accent-gold);
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 0.15rem 0.55rem;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.28rem;
+      transition: all 0.15s ease;
+    }
+
+    .exam-countdown-chip:hover {
+      background: var(--accent-gold);
+      color: #0f172a;
+    }
+
+    .subject-title-main {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+
+    .subject-title-sub {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      margin-top: 0.15rem;
+      font-weight: 600;
+    }
+
+    .expand-circle {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-strong);
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      flex-shrink: 0;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .subject-card.expanded .expand-circle {
+      transform: rotate(180deg);
+      background: var(--accent-gold);
+      color: #0f172a;
+      border-color: var(--accent-gold);
+    }
+
+    .units-drawer {
+      display: none;
+      margin-top: 0.95rem;
+      padding-top: 0.95rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .subject-card.expanded .units-drawer {
+      display: block;
+    }
+
+    .units-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 0.85rem;
+    }
+
+    .unit-tile {
+      background: var(--bg-surface);
+      border: 1.5px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.6rem;
+      transition: all 0.18s ease;
+    }
+
+    .unit-tile:hover {
+      border-color: var(--border-cyan);
+      transform: translateY(-2px);
+    }
+
+    .unit-tile-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .unit-num-tag {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: var(--accent-cyan);
+    }
+
+    .status-pill {
+      font-size: 0.58rem;
+      font-weight: 800;
+      padding: 0.12rem 0.48rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+    }
+
+    .status-pill.ready {
+      background: rgba(16, 185, 129, 0.16);
+      color: var(--accent-emerald);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+    }
+
+    .unit-tile-title {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.35;
+    }
+
+    .unit-tile-sub {
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+      margin-top: 0.15rem;
+    }
+
+    .unit-topics-list {
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      background: var(--bg-elevated);
+      padding: 0.55rem 0.7rem;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.28rem;
+    }
+
+    .subtopic-line {
+      display: block;
+      padding-left: 0.1rem;
+    }
+
+    .unit-actions-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.2rem;
+    }
+
+    .res-btn {
+      flex: 1;
+      min-width: 120px;
+      padding: 0.48rem 0.65rem;
+      border-radius: 8px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      border: 1px solid var(--border-strong);
+      background: var(--bg-elevated);
+      color: var(--text-primary);
+      transition: all 0.15s ease;
+    }
+
+    .res-btn.module-ready {
+      background: linear-gradient(135deg, #0284c7 0%, #1d4ed8 100%);
+      color: #ffffff;
+      border-color: rgba(56, 189, 248, 0.5);
+    }
+
+    .res-btn.module-ready:hover {
+      filter: brightness(1.1);
+    }
+
+    /* ===================================================================== */
+    /* 6. SUBTLE ROYAL AUTHOR FOOTER (SPACED, SMALL, CENTERED ENGLISH ONLY)  */
+    /* ===================================================================== */
+    .royal-footer {
+      margin-top: 4rem;
+      padding: 1.8rem 1rem 2.8rem 1rem;
+      border-top: 1px solid var(--border-subtle);
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.25rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* ===================================================================== */
+    /* 7. MODALS (READER, EXAM SCHEDULE, STUDENT LOGIN, ADMIN CONSOLE)       */
+    /* ===================================================================== */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 450;
+      background: rgba(6, 8, 15, 0.82);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .modal-backdrop.active {
+      display: flex;
+    }
+
+    .modal-card {
+      background: var(--bg-surface);
+      border: 1.5px solid var(--border-strong);
+      border-top: 4px solid var(--accent-gold);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 620px;
+      max-height: 88vh;
+      overflow-y: auto;
+      padding: 1.25rem;
+      box-shadow: var(--shadow-card);
+      font-size: 15px;
+    }
+
+    .modal-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 1rem;
+    }
+
+    .modal-top h3 {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+
+    .close-icon-btn {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-strong);
+      color: var(--text-primary);
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    /* Student Grid inside Login Modal */
+    .student-roster-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+      gap: 0.5rem;
+      max-height: 320px;
+      overflow-y: auto;
+      padding: 0.25rem;
+      margin: 0.75rem 0;
+    }
+
+    .student-select-btn {
+      background: var(--bg-elevated);
+      border: 1.5px solid var(--border-subtle);
+      color: var(--text-primary);
+      padding: 0.55rem 0.7rem;
+      border-radius: 10px;
+      text-align: left;
+      cursor: pointer;
+      font-size: 13.5px;
+      font-weight: 700;
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+      transition: all 0.15s ease;
+    }
+
+    .student-select-btn:hover, .student-select-btn.selected {
+      border-color: var(--accent-gold);
+      background: rgba(245, 158, 11, 0.14);
+    }
+
+    .student-roll-small {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: var(--accent-cyan);
+    }
+
+    /* Full-Screen Seamless Reader Modal */
+    .reader-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 550;
+      background: var(--bg-base);
+      display: none;
+      flex-direction: column;
+    }
+
+    .reader-overlay.active {
+      display: flex;
+    }
+
+    .reader-bar {
+      height: 56px;
+      background: #090d16;
+      color: #ffffff;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 0 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .reader-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      min-width: 0;
+    }
+
+    .reader-bar-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: #ffffff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .reader-author-tag {
+      font-size: 11.5px;
+      color: #fbbf24;
+      font-weight: 700;
+      display: block;
+    }
+
+    .reader-iframe-box {
+      flex: 1;
+      width: 100%;
+      height: calc(100vh - 56px);
+      position: relative;
+      background: #ffffff;
+    }
+
+    .reader-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* ===================================================================== */
+    /* 8. BOTTOM-RIGHT "⚙️ Tools" BUTTON & POPUP (MATCHING A1_U1_STUDY_HUB)  */
+    /* ===================================================================== */
+    .bottom-right-trigger {
+      position: fixed;
+      bottom: 14px;
+      right: 16px;
+      z-index: 430;
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 800;
+      padding: 8px 18px;
+      border-radius: 999px;
+      border: 2px solid var(--accent-cyan);
+      background-color: var(--bg-surface);
+      color: var(--accent-cyan);
+      cursor: pointer;
+      box-shadow: var(--shadow-card);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.18s ease;
+    }
+
+    .bottom-right-trigger:hover, .bottom-right-trigger.active {
+      background-color: var(--accent-cyan);
+      color: #06080f;
+    }
+
+    .bottom-tools-popup {
+      position: fixed;
+      bottom: 60px;
+      right: 16px;
+      z-index: 425;
+      background-color: var(--bg-surface);
+      border: 2px solid var(--border-strong);
+      border-radius: 14px;
+      padding: 14px;
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.65);
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      width: 320px;
+      max-width: calc(100vw - 32px);
+      font-size: 14px;
+    }
+
+    .bottom-tools-popup.open {
+      display: flex;
+    }
+
+    .tool-section-label {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .tool-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .sm-btn {
+      font-family: var(--font-sans);
+      font-size: 13.5px;
+      font-weight: 700;
+      padding: 6px 10px;
+      border-radius: 8px;
+      border: 1.5px solid var(--border-strong);
+      background-color: var(--bg-elevated);
+      color: var(--text-primary);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      flex: 1;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+
+    .sm-btn:hover, .sm-btn.active {
+      background-color: var(--accent-cyan);
+      color: #06080f;
+      border-color: var(--accent-cyan);
+    }
+
+    .form-field {
+      margin-bottom: 0.8rem;
+    }
+
+    .form-field label {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 800;
+      color: var(--text-secondary);
+      margin-bottom: 0.28rem;
+      text-transform: uppercase;
+    }
+
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      background: var(--bg-elevated);
+      border: 1.5px solid var(--border-strong);
+      color: var(--text-primary);
+      padding: 0.6rem 0.8rem;
+      border-radius: 10px;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      outline: none;
+    }
+
+    /* ===================================================================== */
+    /* 9. CRISP HIGH-CONTRAST PRINT CSS WITH AUTHOR FOOTER                   */
+    /* ===================================================================== */
+    .print-only-author-footer {
+      display: none;
+    }
+
+    @page {
+      size: A4 portrait;
+      margin: 12mm 10mm 14mm 10mm;
+    }
+
+    @media print {
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      html {
+        font-size: var(--print-font-size) !important;
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+
+      body {
+        background: #ffffff !important;
+        background-image: none !important;
+        color: #000000 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      .bottom-right-trigger,
+      .bottom-tools-popup,
+      .top-drawer-panel,
+      .top-menu-btn,
+      .controls-bar,
+      .header-right-controls,
+      .expand-circle,
+      .unit-actions-row,
+      .modal-backdrop,
+      .reader-overlay {
+        display: none !important;
+      }
+
+      .units-drawer {
+        display: block !important;
+      }
+
+      .subject-card, .unit-tile, .hero-countdown-panel {
+        background: #ffffff !important;
+        border: 1.5px solid #000000 !important;
+        box-shadow: none !important;
+        color: #000000 !important;
+        break-inside: avoid;
+        margin-bottom: 0.8rem !important;
+      }
+
+      h1, h2, h3, h4, p, span, div, strong {
+        color: #000000 !important;
+      }
+
+      .print-only-author-footer {
+        display: block !important;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-size: 8.5pt !important;
+        font-weight: 600 !important;
+        color: #1e293b !important;
+        border-top: 1px solid #94a3b8;
+        padding-top: 3px;
+        background: #ffffff !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .brand-titles h1 { font-size: 0.96rem; }
+      .hero-countdown-panel { flex-direction: column; align-items: flex-start; }
+      .ticker-group { width: 100%; justify-content: space-between; }
+      .ticker-box { flex: 1; }
+      .units-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Print-Only Subtle Author Credit Footer -->
+  <div class="print-only-author-footer">
+    Joslet PJ • Prepared by Joslet PJ
+  </div>
+
+  <!-- TOP NAVIGATION DRAWER (MATCHING A1_U1_STUDY_HUB.HTML) -->
+  <div class="top-drawer-panel" id="topDrawerPanel">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid var(--border-subtle);">
+      <h2 style="font-size:15px; font-weight:800; color:var(--accent-cyan);">📚 B.Ed. Special Education (Sem 1) — Quick Course &amp; Unit Navigation</h2>
+      <button class="sm-btn" style="flex:0; padding:4px 12px;" onclick="toggleTopDrawer()">✕ Close</button>
+    </div>
+    <div id="topDrawerDynamicContent"></div>
+  </div>
+
+  <div class="container">
+
+    <!-- =================================================================== -->
+    <!-- 1. ROYAL HEADER & PERSONALIZED STUDENT BAR                          -->
+    <!-- =================================================================== -->
+    <header class="royal-header">
+      <div class="header-top-bar">
+        <div class="brand-cluster">
+          <button class="top-menu-btn" id="topMenuBtn" onclick="toggleTopDrawer()" title="Open Course &amp; Chapter Navigation">☰ Menu</button>
+          <div class="royal-crest">JPJ</div>
+          <div class="brand-titles">
+            <h1 id="portalMainHeading">B.Ed. Special Education — Sem 1 Digital Academy</h1>
+            <div class="author-subline">
+              <span class="author-badge">Joslet PJ</span>
+              <span id="uniSubtitleText">University of Calicut • Hearing Impairment (HI) &amp; ID</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="header-right-controls">
+          <button class="student-welcome-chip" onclick="openStudentLoginModal()" title="Switch Student Profile">
+            <span>👋</span>
+            <span id="studentGreetingText">Hi, Scholar! (Select Name)</span>
+          </button>
+
+          <button class="top-btn gold" onclick="toggleLanguage()" id="topLangToggleBtn" title="Switch Language (Malayalam / English)">
+            🌐 <span id="topLangLabel">English</span>
+          </button>
+
+          <button class="top-btn" onclick="openTimetableModal()" id="topScheduleBtn">
+            📅 <span data-ml="പരീക്ഷാ ടൈംടേബിൾ" data-en="Exam Schedule">പരീക്ഷാ ടൈംടേബിൾ</span>
+          </button>
+
+          <button class="top-btn" onclick="openAdminGateModal()" title="Admin Login">
+            🔒 <span data-ml="അഡ്മിൻ ലോഗിൻ" data-en="Admin Login">അഡ്മിൻ ലോഗിൻ</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Live Countdown Banner -->
+      <div class="hero-countdown-panel">
+        <div class="countdown-left">
+          <div class="live-beacon"></div>
+          <div>
+            <div class="cd-tag" id="cdBannerLabel">അടുത്ത പരീക്ഷ കൗണ്ട്ഡൗൺ • NEXT EXAM COUNTDOWN</div>
+            <div class="cd-main-title" id="cdExamName">A1: Human Growth &amp; Development (Model Exam — Nov 9, 10:00 AM)</div>
+            <div class="cd-sub-note" id="cdUniNote">University Main Exam starts Nov 18, 2026 (2:00 PM – 4:00 PM) • Click any subject's 📅 button for paper-wise countdown</div>
+          </div>
+        </div>
+
+        <div class="ticker-group">
+          <div class="ticker-box">
+            <span class="ticker-num" id="cdDays">02</span>
+            <span class="ticker-unit-lbl" data-ml="ദിവസം" data-en="Days">ദിവസം</span>
+          </div>
+          <div class="ticker-box">
+            <span class="ticker-num" id="cdHours">09</span>
+            <span class="ticker-unit-lbl" data-ml="മണിക്കൂർ" data-en="Hours">മണിക്കൂർ</span>
+          </div>
+          <div class="ticker-box">
+            <span class="ticker-num" id="cdMins">30</span>
+            <span class="ticker-unit-lbl" data-ml="മിനിറ്റ്" data-en="Mins">മിനിറ്റ്</span>
+          </div>
+          <div class="ticker-box">
+            <span class="ticker-num" id="cdSecs">00</span>
+            <span class="ticker-unit-lbl" data-ml="സെക്കൻഡ്" data-en="Secs">സെക്കൻഡ്</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- =================================================================== -->
+    <!-- 2. SEARCH & FILTER CONTROLS                                         -->
+    <!-- =================================================================== -->
+    <div class="controls-bar">
+      <div class="search-wrapper">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="portalSearchInput" class="search-input" placeholder="വിഷയം, യൂണിറ്റ്, അല്ലെങ്കിൽ ടോപ്പിക് തിരയുക (e.g. Piaget, RPwD, A1, Audiogram)..." oninput="renderSubjectsStream()">
+      </div>
+
+      <div class="filter-pills">
+        <button class="filter-pill active" onclick="setCategoryFilter('all', this)" data-ml="എല്ലാ വിഷയങ്ങളും (6+2)" data-en="All Courses (6+2)">എല്ലാ വിഷയങ്ങളും (6+2)</button>
+        <button class="filter-pill" onclick="setCategoryFilter('ready', this)" data-ml="✅ പഠിക്കാൻ തയ്യാറായവ" data-en="✅ Ready Study Modules">✅ പഠിക്കാൻ തയ്യാറായവ</button>
+        <button class="filter-pill" onclick="setCategoryFilter('core', this)" data-ml="കോർ പേപ്പറുകൾ (A1, A2, B1)" data-en="Core Papers (A1, A2, B1)">കോർ പേപ്പറുകൾ (A1, A2, B1)</button>
+        <button class="filter-pill" onclick="setCategoryFilter('hi', this)" data-ml="സ്പെഷ്യലൈസേഷൻ (C1, C2, C3)" data-en="HI Specialization (C1, C2, C3)">സ്പെഷ്യലൈസേഷൻ (C1, C2, C3)</button>
+        <button class="filter-pill" onclick="setCategoryFilter('practicum', this)" data-ml="പ്രാക്ടിക്കൽസ് (E1, E2)" data-en="Practicum (E1, E2)">പ്രാക്ടിക്കൽസ് (E1, E2)</button>
+        <button class="filter-pill" onclick="expandAllSubjects()" data-ml="📂 എല്ലാം തുറക്കുക" data-en="📂 Expand All">📂 എല്ലാം തുറക്കുക</button>
+      </div>
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- 3. SUBJECTS & UNITS STREAM                                          -->
+    <!-- =================================================================== -->
+    <div class="subjects-stream" id="subjectsStreamContainer"></div>
+
+    <!-- =================================================================== -->
+    <!-- 4. SPACED CENTERED ENGLISH-ONLY FOOTER                              -->
+    <!-- =================================================================== -->
+    <footer class="royal-footer">
+      <div>Joslet PJ</div>
+      <div>Prepared by Joslet PJ</div>
+    </footer>
+
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- BOTTOM-RIGHT "⚙️ Tools" BUTTON & POPUP PANEL (SAME AS A1_U1_HUB)       -->
+  <!-- ===================================================================== -->
+  <button class="bottom-right-trigger" id="bottomToolsBtn" onclick="toggleBottomTools()" title="Open Display &amp; Font Size Settings">
+    ⚙️ Tools
+  </button>
+
+  <div class="bottom-tools-popup" id="bottomToolsPopup">
+    <div class="tool-section-label">
+      <span>Font Size (16px – 34px)</span>
+      <span id="fontSizeLabel" style="color:var(--accent-cyan);">22px</span>
+    </div>
+    <div class="tool-row">
+      <button class="sm-btn" onclick="changeBaseFontSize(-2)">A−</button>
+      <button class="sm-btn" onclick="changeBaseFontSize(0)">Default (22px)</button>
+      <button class="sm-btn active" onclick="changeBaseFontSize(2)">A+</button>
+    </div>
+
+    <div class="tool-section-label">
+      <span>Theme &amp; Language</span>
+    </div>
+    <div class="tool-row">
+      <button class="sm-btn" onclick="toggleThemeMode()" id="bottomThemeBtn">☀️ Light</button>
+      <button class="sm-btn active" onclick="toggleLanguage()" id="bottomLangBtn">🌐 English</button>
+    </div>
+
+    <div class="tool-section-label">
+      <span>Portal Actions</span>
+    </div>
+    <div class="tool-row">
+      <button class="sm-btn" onclick="window.print()">🖨️ Print A4</button>
+      <button class="sm-btn" onclick="window.scrollTo({top:0, behavior:'smooth'})">⬆ Top</button>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL 1: IN-APP FULL-SCREEN HTML STUDY MATERIAL READER                -->
+  <!-- ===================================================================== -->
+  <div class="reader-overlay" id="studyReaderOverlay">
+    <div class="reader-bar">
+      <div class="reader-bar-left">
+        <button class="top-btn" style="background:#1e293b; color:#fff; border-color:#475569; font-size:13px;" onclick="closeStudyReader()">
+          ← <span data-ml="തിരികെ" data-en="Back">തിരികെ</span>
+        </button>
+        <div style="min-width:0;">
+          <div class="reader-bar-title" id="readerActiveTitle">Study Material</div>
+          <span class="reader-author-tag">Joslet PJ • Prepared by Joslet PJ</span>
+        </div>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:0.4rem; flex-shrink:0;">
+        <button class="top-btn" style="background:#1e293b; color:#fff; border-color:#475569; font-size:13px;" onclick="printActiveReaderFrame()" title="Print this Study Material">
+          🖨️ <span data-ml="പ്രിന്റ്" data-en="Print">പ്രിന്റ്</span>
+        </button>
+        <button class="top-btn" style="background:#0284c7; color:#fff; border-color:#38bdf8; font-size:13px;" onclick="openActiveResourceNewTab()">
+          ↗ <span data-ml="പൂർണ്ണ സ്ക്രീൻ" data-en="Full Tab">പൂർണ്ണ സ്ക്രീൻ</span>
+        </button>
+        <button class="top-btn" style="background:#dc2626; color:#fff; border-color:#dc2626; font-size:13px;" onclick="closeStudyReader()">
+          ✕
+        </button>
+      </div>
+    </div>
+
+    <div class="reader-iframe-box">
+      <iframe id="studyReaderIframe" class="reader-iframe" title="Study Content Reader"></iframe>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL 2: SUBJECT-SPECIFIC & FULL EXAM COUNTDOWN TIMETABLE             -->
+  <!-- ===================================================================== -->
+  <div class="modal-backdrop" id="timetableModal" onclick="if(event.target===this) closeTimetableModal()">
+    <div class="modal-card">
+      <div class="modal-top">
+        <h3 id="scheduleModalHeading">📅 B.Ed. Sem 1 Live Exam Countdown &amp; Schedule</h3>
+        <button class="close-icon-btn" onclick="closeTimetableModal()">✕</button>
+      </div>
+      <div id="scheduleModalContent"></div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL 3: CLASS ROSTER STUDENT LOGIN ("Hi, [Student Name]")            -->
+  <!-- ===================================================================== -->
+  <div class="modal-backdrop" id="studentLoginModal" onclick="if(event.target===this) closeStudentLoginModal()">
+    <div class="modal-card">
+      <div class="modal-top">
+        <h3 data-ml="🎓 വിദ്യാർത്ഥി ലോഗിൻ (Select Your Name)" data-en="🎓 Student Portal Login (Select Your Name)">🎓 വിദ്യാർത്ഥി ലോഗിൻ (Select Your Name)</h3>
+        <button class="close-icon-btn" onclick="closeStudentLoginModal()">✕</button>
+      </div>
+
+      <p style="font-size:13.5px; color:var(--text-secondary); margin-bottom:0.65rem;" id="studentLoginDesc">
+        നിങ്ങളുടെ പേര് താഴെ തിരഞ്ഞെടുക്കുക (അല്ലെങ്കിൽ ടൈപ്പ് ചെയ്യുക). ഒരു തവണ തിരഞ്ഞെടുത്താൽ നിങ്ങളുടെ ഫോണിൽ ഇത് ഓട്ടോമാറ്റിക്കായി ഓർത്തുവെക്കും:
+      </p>
+
+      <input type="text" id="studentFilterInput" class="form-input" placeholder="Search your name or Roll No..." oninput="renderStudentRosterGrid()" style="margin-bottom:0.5rem;">
+
+      <div class="student-roster-grid" id="studentRosterGrid"></div>
+
+      <div id="rollVerifyBox" style="display:none; margin-top:0.75rem; padding:0.75rem; background:var(--bg-elevated); border-radius:10px; border:1px solid var(--border-royal);">
+        <div class="form-field" style="margin-bottom:0.5rem;">
+          <label id="selectedStudentPrompt">Enter Roll Number / PIN to Confirm:</label>
+          <input type="text" id="studentRollInput" class="form-input" placeholder="Enter your Roll No (e.g. 01)">
+        </div>
+        <button class="top-btn gold" style="width:100%; justify-content:center; padding:0.6rem; font-size:14px;" onclick="confirmStudentRollLogin()">
+          ✓ Confirm &amp; Continue
+        </button>
+      </div>
+
+      <div style="margin-top:0.85rem; padding-top:0.75rem; border-top:1px solid var(--border-subtle); display:flex; gap:0.5rem; align-items:center;">
+        <input type="text" id="customStudentNameInput" class="form-input" placeholder="അല്ലെങ്കിൽ നിങ്ങളുടെ പേര് ഇവിടെ ടൈപ്പ് ചെയ്യുക...">
+        <button class="top-btn gold" style="padding:0.6rem 1rem; white-space:nowrap; font-size:14px;" onclick="saveManualStudentName()">
+          Save Name
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL 4: STRONG PASSWORD-PROTECTED ADMIN CONSOLE (HTML UPLOAD ONLY)   -->
+  <!-- ===================================================================== -->
+  <div class="modal-backdrop" id="adminGateModal" onclick="if(event.target===this) closeAdminGateModal()">
+    <div class="modal-card">
+      <div class="modal-top">
+        <h3>🔒 Admin Console — Joslet PJ</h3>
+        <button class="close-icon-btn" onclick="closeAdminGateModal()">✕</button>
+      </div>
+
+      <!-- Step A: Password Verification Gate -->
+      <div id="adminAuthView">
+        <p style="font-size:13.5px; color:var(--text-secondary); margin-bottom:0.85rem;">
+          പുതിയ HTML സ്റ്റഡി മെറ്റീരിയലുകൾ ചേർക്കുന്നതിനായി അഡ്മിൻ മാസ്റ്റർ പാസ്‌വേഡ് നൽകുക:
+        </p>
+        <div class="form-field">
+          <label>Admin Master Password:</label>
+          <input type="password" id="adminPassInput" class="form-input" placeholder="Enter Admin Password..." autocomplete="off" onkeydown="if(event.key==='Enter') verifyAdminAccess()">
+        </div>
+        <div id="adminAuthError" style="color:#f43f5e; font-size:13px; font-weight:700; margin-bottom:0.6rem; display:none;"></div>
+        <button class="top-btn gold" style="width:100%; justify-content:center; padding:0.65rem; font-size:14px;" onclick="verifyAdminAccess()">
+          🔓 Unlock Admin Console
+        </button>
+      </div>
+
+      <!-- Step B: Unlocked Admin Console -->
+      <div id="adminUnlockedView" style="display:none;">
+        <div style="display:flex; gap:0.4rem; margin-bottom:1rem; flex-wrap:wrap;">
+          <button class="filter-pill active" id="admTabResBtn" onclick="switchAdminTab('resource')">📚 Add / Manage HTML Study Material</button>
+          <button class="filter-pill" id="admTabRosterBtn" onclick="switchAdminTab('roster')">👥 Manage 30 Classmates Roster</button>
+        </div>
+
+        <!-- Sub-Tab 1: Add HTML Study Material Only (No PDF) -->
+        <div id="adminResourcePanel">
+          <div class="form-field">
+            <label>1. Select Course (വിഷയം)</label>
+            <select id="admCourseSelect" class="form-select" onchange="syncAdminUnitOptions()">
+              <option value="A1">Course A1: Human Growth &amp; Development</option>
+              <option value="A2">Course A2: Contemporary India and Education</option>
+              <option value="B1">Course B1: Introduction to Disabilities</option>
+              <option value="C1">Course C1 (HI): Identification of Disability and Assessment of Needs</option>
+              <option value="C2">Course C2 (HI): Curriculum Development, Adaptation and Evaluation</option>
+              <option value="C3">Course C3 (HI): Intervention and Teaching Strategies</option>
+              <option value="Practicum">Practicum: Area E1 (HI) &amp; Area E2 (HI)</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label>2. Select Unit (യൂണിറ്റ്)</label>
+            <select id="admUnitSelect" class="form-select"></select>
+          </div>
+
+          <div style="border:2px dashed var(--border-cyan); border-radius:12px; padding:1rem; text-align:center; cursor:pointer; margin-bottom:0.85rem;" onclick="document.getElementById('admFilePicker').click()">
+            <div style="font-weight:800; font-size:14px; color:var(--accent-cyan);">📂 Click to Choose HTML Study File (.html) from Device</div>
+            <div id="admPickedFileName" style="font-size:12.5px; color:var(--text-muted); margin-top:0.25rem;">Only HTML Study Files (.html / .htm)</div>
+            <input type="file" id="admFilePicker" accept=".html,.htm,text/html" style="display:none;" onchange="handleAdminFileSelect(event)">
+          </div>
+
+          <div class="form-field">
+            <label>Or Enter Relative HTML File Path (Optional):</label>
+            <input type="text" id="admPathInput" class="form-input" placeholder="e.g. A1_U1_Study_Hub.html">
+          </div>
+
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <button class="top-btn gold" style="flex:2; justify-content:center; padding:0.65rem; font-size:14px;" onclick="saveAdminResource()">
+              ✅ Publish HTML Study Material to Unit
+            </button>
+            <button class="top-btn" style="flex:1; justify-content:center; padding:0.65rem; font-size:13px; border-color:var(--accent-rose); color:var(--accent-rose);" onclick="removeAdminUnitResource()">
+              🗑️ Remove Unit HTML
+            </button>
+          </div>
+
+          <div style="margin-top:0.95rem; padding-top:0.85rem; border-top:1px solid var(--border-subtle);">
+            <button class="top-btn" style="width:100%; justify-content:center; padding:0.6rem; font-size:13px; border-color:var(--accent-emerald); color:var(--accent-emerald);" onclick="exportStandalonePortalWithModules()">
+              💾 Download Updated Portal HTML (With All Added Study Materials Baked In)
+            </button>
+          </div>
+        </div>
+
+        <!-- Sub-Tab 2: Batch Update 30 Students Roster -->
+        <div id="adminRosterPanel" style="display:none;">
+          <p style="font-size:13px; color:var(--text-secondary); margin-bottom:0.5rem;">
+            ക്ലാസ്സിലെ 30 പേരുടെയും പേരുകൾ (ഒരു വരിയിൽ ഒരാൾ വീതം `RollNo - Name` എന്ന രീതിയിൽ) താഴെ ചേർക്കാം:
+          </p>
+          <div class="form-field">
+            <label>
+              <input type="checkbox" id="requireRollPinToggle" onchange="toggleRollPinRequirement()"> Require Roll Number to Login
+            </label>
+          </div>
+          <div class="form-field">
+            <textarea id="admRosterTextarea" class="form-textarea" rows="8" placeholder="01 - Student Name..."></textarea>
+          </div>
+          <button class="top-btn gold" style="width:100%; justify-content:center; padding:0.65rem; font-size:14px;" onclick="saveAdminRosterList()">
+            💾 Save Class Roster (30 Students)
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Embedded HTML Modules Container (Starts Empty; Populated When Admin Exports Standalone File) -->
+  <script id="jpjEmbeddedModulesScript">
+    window.JPJ_EMBEDDED_MODULES = {};
+  </script>
+
+  <!-- ===================================================================== -->
+  <!-- PORTAL ENGINE & VERBATIM CALICUT UNIVERSITY SEM 1 SYLLABUS DATABASE   -->
+  <!-- ===================================================================== -->
+  <script>
+    // =====================================================================
+    // 1. VERBATIM SEMESTER 1 SYLLABUS DATABASE (LETTER-FOR-LETTER FROM PDF)
+    // =====================================================================
+    const COURSES_DB = [
+      {
+        id: "A1",
+        category: "core",
+        titleEn: "Human Growth & Development",
+        titleMl: "Human Growth & Development",
+        hoursEn: "60 Hours • 2 Credits • 50 Marks",
+        hoursMl: "60 മണിക്കൂർ • 2 ക്രെഡിറ്റ് • 50 മാർക്ക്",
+        modelExamIso: "2026-11-09T10:00:00+05:30",
+        modelExamDisplayMl: "നവംബർ 9, തിങ്കൾ (10:00 AM – 12:00 PM)",
+        modelExamDisplayEn: "Nov 9, Mon (10:00 AM – 12:00 PM)",
+        uniExamIso: "2026-11-18T14:00:00+05:30",
+        uniExamDisplayMl: "നവംബർ 18, ബുധൻ (02:00 PM – 04:00 PM)",
+        uniExamDisplayEn: "Nov 18, Wed (02:00 PM – 04:00 PM)",
+        units: [
+          {
+            num: "1",
+            unitLabel: "Unit 1",
+            titleEn: "Approaches to Human Development",
+            subheadings: [
+              "1.1: Human development as a discipline from infancy to adulthood",
+              "1.2: Concepts and Principles of development",
+              "1.3: Developing Human- Stages (Prenatal development, Infancy, Childhood, Adolescence, Adulthood)",
+              "1.4: Basic Understanding of Nature versus Nurture on Development",
+              "1.5: Basic Understanding of Domains of Development of Physical, Sensory- perceptual, Cognitive, Socio-emotional, Language & communication, social relationship"
+            ],
+            modulePath: null
+          },
+          {
+            num: "2",
+            unitLabel: "Unit 2",
+            titleEn: "Theoretical Perspectives on Human Development",
+            subheadings: [
+              "2.1: Psychodynamic Theories: Basic Understanding of key concepts: Sigmund Freud’s Psychoanalytic theory and Erikson’s Psychosocial theory",
+              "2.2: Cognitive Theories: Basic Understanding of key concepts: Piaget and Bruner",
+              "2.3: Social Constructive theory: Basic Understanding of key concepts- Lev Vygotskey",
+              "2.4: Humanistic Theory: Basic Understanding of key concepts: Abraham Maslow",
+              "2.5: Ecological theory: Basic Understanding of key concepts: Bronfenbrenner"
+            ],
+            modulePath: null
+          },
+          {
+            num: "3",
+            unitLabel: "Unit 3",
+            titleEn: "Prenatal and Early years (Zero -Eight years)",
+            subheadings: [
+              "3.1: Prenatal development: Stages and influences on prenatal development",
+              "3.2: Screening the newborn -APGAR Score, Reflexes and responses, neuro-perceptual development",
+              "3.3: Basic Milestones and variations in Development",
+              "3.4: Environmental factors influencing early childhood development",
+              "3.5: Role of play in enhancing development"
+            ],
+            modulePath: null
+          },
+          {
+            num: "4",
+            unitLabel: "Unit 4",
+            titleEn: "Early Adolescence (From nine years to eighteen years)",
+            subheadings: [
+              "4.1: Emerging capabilities across domains of physical, social emotional",
+              "4.2: Emerging capabilities across domains related to cognition-Meta Cognition and Creativity",
+              "4.3: Issues related to puberty",
+              "4.4: Gender and development",
+              "4.5: Influence of the environment on the growing child"
+            ],
+            modulePath: null
+          },
+          {
+            num: "5",
+            unitLabel: "Unit 5",
+            titleEn: "Transitions into Adulthood",
+            subheadings: [
+              "5.1: Psychological well-being",
+              "5.2: Formation of identity and self-concept",
+              "5.3: Emerging roles and responsibilities",
+              "5.4: Life Skills and Independent Living",
+              "5.5: Career Choices"
+            ],
+            modulePath: null
+          }
+        ]
+      },
+      {
+        id: "A2",
+        category: "core",
+        titleEn: "Contemporary India and Education",
+        titleMl: "Contemporary India and Education",
+        hoursEn: "60 Hours • 2 Credits • 50 Marks",
+        hoursMl: "60 മണിക്കൂർ • 2 ക്രെഡിറ്റ് • 50 മാർക്ക്",
+        modelExamIso: "2026-11-09T14:00:00+05:30",
+        modelExamDisplayMl: "നവംബർ 9, തിങ്കൾ (02:00 PM – 04:00 PM)",
+        modelExamDisplayEn: "Nov 9, Mon (02:00 PM – 04:00 PM)",
+        uniExamIso: "2026-11-19T14:00:00+05:30",
+        uniExamDisplayMl: "നവംബർ 19, വ്യാഴം (02:00 PM – 04:00 PM)",
+        uniExamDisplayEn: "Nov 19, Thu (02:00 PM – 04:00 PM)",
+        units: [
+          {
+            num: "1",
+            unitLabel: "Unit 1",
+            titleEn: "Philosophical Foundations of Education",
+            subheadings: [
+              "1.1: Education: Meaning and definition, nature and scope;",
+              "1.2: Aims and Agencies of Education",
+              "1.3: Schools of Philosophy: Idealism, Naturalism, Pragmatism, Existentialism and Humanism.",
+              "1.4: Historical Perspectives of Indian Education: Gandhi, Tagore and Vivekananda.",
+              "1.5: Classical Indian Philosophies: Vedanta Darshan, Sankya Darshan, Budhism and Jainism"
+            ],
+            modulePath: null
+          },
+          {
+            num: "2",
+            unitLabel: "Unit 2",
+            titleEn: "Understanding Diversity",
+            subheadings: [
+              "2.1: Diversity: Concept, Nature and Types",
+              "2.2: Diversity in disability",
+              "2.3: Diversity and learning: Diversity in classroom, Diversity in schooling (Inclusive Education as a right based model. Complementarity of Inclusive and Special Schools)",
+              "2.4: Global Perspective: United Nations mandate on Disability, International Classification of Functioning, Disability and Health (ICF 2001 by WHO)",
+              "2.5: UN SDGs: Good Health and Wellbeing as a Sustainable Development Goal (UN SDG3), Quality Education as a Sustainable Development Goal (UN SDG4), Gender Equality as a Sustainable Development Goal (UN SDG5), Reduced Inequality as a Sustainable Development Goal (UN SDG10)"
+            ],
+            modulePath: null
+          },
+          {
+            num: "3",
+            unitLabel: "Unit 3",
+            titleEn: "Commissions, Acts and Policies on Education in General and Children with Disabilities",
+            subheadings: [
+              "3.1: National Commissions,: University Education Commission (1948-49), Secondary Education Commission (1952-53), Education Commission (1964-66);",
+              "3.2: National Policy on Education (NPE 1968), National Policy of Education (NPE 1986 and POA1992), National Education Policy (NEP, 2020)",
+              "3.3: National Curriculum Framework (NCF, 2005), National Curriculum Framework for Teacher Education (NCFTE, 2009), National Curriculum Framework for School Education (NCFSE, 2023)",
+              "3.4: International Conventions and Policies: Salamanca Declaration and Framework, 1994; UNCRPD, 2006 (United Nations Committee on Right of Persons with Disabilities); MDG, 2015 (The Millennium Development Goals Report); INCHEON strategies (United Nations effort, Incheon Gan 2030); Biwako Millennium Framework.",
+              "3.5: National Acts: RCI Act, 1992, PWD (Persons with Disability) Act, 1995, NT (National Trust) Act, 1999; The Right of Persons with Disability Act 2016."
+            ],
+            modulePath: null
+          },
+          {
+            num: "4",
+            unitLabel: "Unit 4",
+            titleEn: "Development in School Education and Equal Educational Opportunity",
+            subheadings: [
+              "4.1: Constitutional Provisions: Reflecting on ideas of Equality, Liberty, Secularism, and Social Justice; Constitutional Provisions on Right to Education, Women Education, Education for the Weaker Section and Minorities, Education for the Diverse Need Sections.",
+              "4.2: Meaning of equality, equity and equality, prevailing nature and forms of inequality, including dominant and minority groups and related issues; inequality in schooling: public-private schools, rural-urban schools, single teacher schools and other forms of inequalities such as regular and distance education systems.",
+              "4.3: Right to Education, (RTE) Act 2009 &2012",
+              "4.4: Landmarks in Development of Education of Children with Disabilities: concept of disability in Surgeon Report(2005), Disability in Charter Act 1823, Central Advisory Board of Education (CABE 1923), Indian perspective on Disability (Divyang Jan)",
+              "4.5: Programmes and Schemes: IEDC (1974, 1983) (Integrated Education for the Disabled Children), Samarga Shiksha AbhiyanSSA (2000, 2011) (Sarva Shiksha Abhiyan), RMSA, 2009 (Rashtriya Madhyamik Shiksha Abhiyan), IEDSS, 2009 (Inclusive Education of the Disabled at the Secondary Stage)"
+            ],
+            modulePath: null
+          },
+          {
+            num: "5",
+            unitLabel: "Unit 5",
+            titleEn: "Challenges in Education and Professional Development of Teachers",
+            subheadings: [
+              "5.1: Challenges of education across different levels from foundational to secondary stage",
+              "5.2: Professional Development of Teachers: In-service Teacher Education and Professional Development of Teachers (NEP 2020).",
+              "5.3: Professional Ethics of the Teachers and Its Importance, Professional Identity of Teachers, Teacher as a Researcher, Teacher as a Facilitator",
+              "5.4: Strategies for addressing the Issues of Professional Development of Teachers.",
+              "5.5: Role of NCERT, SCERT and NCTE in professional development"
+            ],
+            modulePath: null
+          }
+        ]
+      },
+      {
+        id: "B1",
+        category: "core",
+        titleEn: "Introduction to Disabilities",
+        titleMl: "Introduction to Disabilities",
+        hoursEn: "60 Hours • 2 Credits • 50 Marks",
+        hoursMl: "60 മണിക്കൂർ • 2 ക്രെഡിറ്റ് • 50 മാർക്ക്",
+        modelExamIso: "2026-11-10T10:00:00+05:30",
+        modelExamDisplayMl: "നവംബർ 10, ചൊവ്വ (10:00 AM – 12:00 PM)",
+        modelExamDisplayEn: "Nov 10, Tue (10:00 AM – 12:00 PM)",
+        uniExamIso: "2026-11-20T14:00:00+05:30",
+        uniExamDisplayMl: "നവംബർ 20, വെള്ളി (02:00 PM – 04:00 PM)",
+        uniExamDisplayEn: "Nov 20, Fri (02:00 PM – 04:00 PM)",
+        units: [
+          {
+            num: "1",
+            unitLabel: "Unit I",
+            titleEn: "Basics of disability",
+            subheadings: [
+              "1.1: Exceptionality: Concept, Types, Strengths and Characteristics",
+              "1.2: Diversity, Difficulty, Delay & Disability in learners",
+              "1.3: Myths and realities about disabilities. 2e- Twice exceptionality",
+              "1.4: 21 Specified disabilities in RPwD (2016) and their educational implications",
+              "1.5: International Classification of Functioning (ICF) framework of WHO; inaccessible environments as a source of barriers for learners with disabilities"
+            ],
+            modulePath: null
+          },
+          {
+            num: "2",
+            unitLabel: "Unit 2",
+            titleEn: "Significant provisions for empowerment of learners with disabilities in RPWD Act (2016)",
+            subheadings: [
+              "2.1: Respect for difference and acceptance of persons with disabilities as part of human diversity",
+              "2.2: Benchmark disabilities & high support needs",
+              "2.3: Reasonable accommodations, equality and equity",
+              "2.4: Accessibility & barrier free environment for different disabilities",
+              "2.5: Effective participation and inclusion"
+            ],
+            modulePath: null
+          },
+          {
+            num: "3",
+            unitLabel: "Unit 3",
+            titleEn: "Characteristics, incidence, prevalence, types, and needs of persons with;",
+            subheadings: [
+              "3.1: Locomotor disabilities and Muscular Dystrophy",
+              "3.2: Cerebral Palsy and other neurological conditions",
+              "3.3: Blindness and Low vision",
+              "3.4: Hearing impairment",
+              "3.5: Speech and language disabilities"
+            ],
+            modulePath: null
+          },
+          {
+            num: "4",
+            unitLabel: "Unit 4",
+            titleEn: "Characteristics, incidence, prevalence, types, and needs of persons with;",
+            subheadings: [
+              "4.1: Intellectual Disability",
+              "4.2: Autism Spectrum Disorder",
+              "4.3: Specific Learning Disabilities",
+              "4.4: Multiple Disability and Deafblindness",
+              "4.5: Mental Illness"
+            ],
+            modulePath: null
+          },
+          {
+            num: "5",
+            unitLabel: "Unit 5",
+            titleEn: "Characteristics, incidence, prevalence, types, and needs of persons with; (Other Disabilities in RPwD Act and Sensitivity issues)",
+            subheadings: [
+              "5.1: Blood Disorders: Thalassemia, Sickle Cell Disease & Haemophilia",
+              "5.2: Chronic Neurological Conditions: Parkinson’s Disease & Multiple Sclerosis",
+              "5.3: Other Specified Disabilities: Acid Attack victims, Leprosy Cured Persons & Dwarfism",
+              "5.4: Use of respectable and ‘person first’ language and preserve identity & Avoid labeling except for certification purposes",
+              "5.5: Understand intersectionality of disability & Eliminate stereotypes"
+            ],
+            modulePath: null
+          }
+        ]
+      },
+      {
+        id: "C1",
+        category: "hi",
+        titleEn: "Identification of Disability and Assessment of Needs",
+        titleMl: "Identification of Disability and Assessment of Needs",
+        hoursEn: "60 Hours • 2 Credits • 50 Marks",
+        hoursMl: "60 മണിക്കൂർ • 2 ക്രെഡിറ്റ് • 50 മാർക്ക്",
+        modelExamIso: "2026-11-10T14:00:00+05:30",
+        modelExamDisplayMl: "നവംബർ 10, ചൊവ്വ (02:00 PM – 04:00 PM)",
+        modelExamDisplayEn: "Nov 10, Tue (02:00 PM – 04:00 PM)",
+        uniExamIso: "2026-11-23T14:00:00+05:30",
+        uniExamDisplayMl: "നവംബർ 23, തിങ്കൾ (02:00 PM – 04:00 PM)",
+        uniExamDisplayEn: "Nov 23, Mon (02:00 PM – 04:00 PM)",
+        units: [
+          {
+            num: "1",
+            unitLabel: "Unit 1",
+            titleEn: "Early Identification of Hearing Loss: Need and Strategies",
+            subheadings: [
+              "1.1 Need for and importance of early identification of hearing loss.",
+              "1.2 Auditory, speech and language milestones in typical children (0-2 years).",
+              "1.3 Use of checklists and behavioral observation in early identification of hearing loss by school teachers (congenital & acquired).",
+              "1.4 Team members involved in hearing screening and their role.",
+              "1.5 Referral of children based on signs and symptoms of hearing loss."
+            ],
+            modulePath: null
+          },
+          {
+            num: "2",
+            unitLabel: "Unit 2",
+            titleEn: "Audiological Assessment",
+            subheadings: [
+              "2.1 Orientation: Sound, Physical and psychological parameters/attributes.",
+              "2.2 Assessment & methods of assessment: Subjective (informal and formal hearing tests) & Objective tests; Orientation to these tests and their importance.",
+              "2.3 Audiometer: Block diagram, parts & use.",
+              "2.4 Audiogram: Concept of aided and unaided audiograms, interpretation of audiogram and its implications in assessing the educational needs of children with hearing loss.",
+              "2.5 Concept of speech spectrum and its applications."
+            ],
+            modulePath: null
+          },
+          {
+            num: "3",
+            unitLabel: "Unit 3",
+            titleEn: "Assessment of Communication & Language",
+            subheadings: [
+              "3.1 Communication: Meaning and types.",
+              "3.2 Language: concepts, types (verbal and manual) and structure.",
+              "3.3 Receptive and expressive verbal language and need for its assessment.",
+              "3.4 Impact of various environmental factors such as parental hearing status, family involvement on communication and language.",
+              "3.5 Impact of various types, degrees and onset of hearing loss on communication and language."
+            ],
+            modulePath: null
+          },
+          {
+            num: "4",
+            unitLabel: "Unit 4",
+            titleEn: "Assessment of Speech",
+            subheadings: [
+              "4.1 Speech: definition, prerequisites for the production of speech.",
+              "4.2 Basics of respiration, articulation and phonation (active and passive articulators)",
+              "4.3 Segmental, non-segmental and Supra-segmental aspects of speech and its assessment.",
+              "4.4 Speech intelligibility: Meaning and assessment.",
+              "4.5 Description and classification (vowels and consonants) of speech sounds and orientation to speech acoustics"
+            ],
+            modulePath: null
+          },
+          {
+            num: "5",
+            unitLabel: "Unit 5",
+            titleEn: "Educational Assessment and Indian sign language",
+            subheadings: [
+              "5.1 Educational assessment: Concept and scope",
+              "5.2 Factors affecting educational performance: individual, family and environment.",
+              "5.3 ISL: prerequisites, processes and need for assessment.",
+              "5.4 Basics of ISL Parameters and their role in early sign language acquisition. Development of ISL through the ages.",
+              "5.5 Assessment of various components of ISL (hand-shape, palm orientation, position of the hands, movement of the hands and non-hand components such as the use of the face, facial expressions, or body posture)."
+            ],
+            modulePath: null
+          }
+        ]
+      },
+      {
+        id: "C2",
+        category: "hi",
+        titleEn: "Curriculum Development, Adaptation and Evaluation",
+        titleMl: "Curriculum Development, Adaptation and Evaluation",
+        hoursEn: "60 Hours • 2 Credits • 50 Marks",
+        hoursMl: "60 മണിക്കൂർ • 2 ക്രെഡിറ്റ് • 50 മാർക്ക്",
+        modelExamIso: "2026-11-11T10:00:00+05:30",
+        modelExamDisplayMl: "നവംബർ 11, ബുധൻ (10:00 AM – 12:00 PM)",
+        modelExamDisplayEn: "Nov 11, Wed (10:00 AM – 12:00 PM)",
+        uniExamIso: "2026-11-24T14:00:00+05:30",
+        uniExamDisplayMl: "നവംബർ 24, ചൊവ്വ (02:00 PM – 04:00 PM)",
+        uniExamDisplayEn: "Nov 24, Tue (02:00 PM – 04:00 PM)",
+        units: [
+          {
+            num: "1",
+            unitLabel: "Unit 1",
+            titleEn: "Curriculum and Its Designing",
+            subheadings: [
+              "1.1. Curriculum - Concept, Principles, Types and Models.",
+              "1.2. Curriculum designing, concept and principles.",
+              "1.3. Approaches and steps for curriculum designing.",
+              "1.4. Curricular needs of children with hearing impairment in scholastic areas.",
+              "1.5. Curricular needs of children with hearing impairment in non-scholastic areas."
+            ],
+            modulePath: null
+          },
+          {
+            num: "2",
+            unitLabel: "Unit 2",
+            titleEn: "Developing Literacy skills: Reading",
+            subheadings: [
+              "2.1. Reading: Meaning and Pre-requisites of reading.",
+              "2.2. Types and models of developing reading skills.",
+              "2.3. Approaches and strategies to develop reading skills (Bilingual strategies).",
+              "2.4. Assessment of reading skills at different levels.",
+              "2.5. Challenges and remedial strategies."
+            ],
+            modulePath: null
+          },
+          {
+            num: "3",
+            unitLabel: "Unit 3",
+            titleEn: "Developing Literacy Skills: Writing",
+            subheadings: [
+              "3.1. Meaning and pre-requisites of Writing.",
+              "3.2. Components and types of writing.",
+              "3.3. Steps and strategies in developing writing (Bilingual strategies).",
+              "3.4. Assessment of written language at different levels.",
+              "3.5. Challenges and remedial strategies."
+            ],
+            modulePath: null
+          },
+          {
+            num: "4",
+            unitLabel: "Unit 4",
+            titleEn: "Curricular Adaptation",
+            subheadings: [
+              "4.1. Curricular Adaptation- Meaning and principles.",
+              "4.2. Types of adaptation and process.",
+              "4.3. Need assessment and decision making for adaptation.",
+              "4.4. Adapting Curriculum- Content, teaching-learning material, and instruction.",
+              "4.5. Adaptation and accommodations in student’s evaluation and examinations."
+            ],
+            modulePath: null
+          },
+          {
+            num: "5",
+            unitLabel: "Unit 5",
+            titleEn: "Curricular Evaluation",
+            subheadings: [
+              "5.1. Concept and need for curricular evaluation.",
+              "5.2. Factors associated with curricular evaluation (Learner, Content, Instructor and Resources).",
+              "5.3. Areas of curricular evaluation: Context, Input, Process and Product.",
+              "5.4. Methods and tools for curricular evaluation.",
+              "5.5. Challenges in curricular evaluation."
+            ],
+            modulePath: null
+          }
+        ]
+      },
+      {
+        id: "C3",
+        category: "hi",
+        titleEn: "Intervention and Teaching Strategies",
+        titleMl: "Intervention and Teaching Strategies",
+        hoursEn: "60 Hours • 2 Credits • 50 Marks",
+        hoursMl: "60 മണിക്കൂർ • 2 ക്രെഡിറ്റ് • 50 മാർക്ക്",
+        modelExamIso: "2026-11-11T14:00:00+05:30",
+        modelExamDisplayMl: "നവംബർ 11, ബുധൻ (02:00 PM – 04:00 PM)",
+        modelExamDisplayEn: "Nov 11, Wed (02:00 PM – 04:00 PM)",
+        uniExamIso: "2026-11-25T14:00:00+05:30",
+        uniExamDisplayMl: "നവംബർ 25, ബുധൻ (02:00 PM – 04:00 PM)",
+        uniExamDisplayEn: "Nov 25, Wed (02:00 PM – 04:00 PM)",
+        units: [
+          {
+            num: "1",
+            unitLabel: "Unit 1",
+            titleEn: "Need & Strategies for Early Intervention of Hearing Loss",
+            subheadings: [
+              "1.1 Parent-infant programmes for children with HI: Overview, need, requirements and plan of action.",
+              "1.2 Pre-school training programmes: Overview, need, requirements and plan of action.",
+              "1.3 Individual speech-language therapy programs: Overview, need, requirements and plan of action.",
+              "1.4 Impact of early intervention on school outcomes.",
+              "1.5 Intervention of late identified children with hearing impairment: Challenges & strategies."
+            ],
+            modulePath: null
+          },
+          {
+            num: "2",
+            unitLabel: "Unit 2",
+            titleEn: "Auditory Learning, Speechreading",
+            subheadings: [
+              "2.1 Auditory training: Importance, stages, types, factors affecting auditory training",
+              "2.2 Auditory Verbal Therapy: Principles, pre-requisites, strategies",
+              "2.3 Similarities and difference between auditory training and AVT",
+              "2.4 Speech reading: Need, methods, factors affecting speech reading",
+              "2.5 Role of teacher in Auditory training, AVT and Speech reading"
+            ],
+            modulePath: null
+          },
+          {
+            num: "3",
+            unitLabel: "Unit 3",
+            titleEn: "Speech, communication and Language Teaching Strategies",
+            subheadings: [
+              "3.1 Speech intervention strategies –Approaches (Auditory Global approach, Multisensory syllable unit approach, ling's approach) Uni sensory and multi sensory approach.",
+              "3.2 Teaching speech to CwHI-Formulation of lesson plan and activities for speech teaching, correction, strategies for production of speech (modelling, shaping)",
+              "3.3 Individual and group speech teaching and their strengths and limitations",
+              "3.4 Methods of teaching language: Natural, Structural and Combined",
+              "3.5 Techniques of teaching language"
+            ],
+            modulePath: null
+          },
+          {
+            num: "4",
+            unitLabel: "Unit 4",
+            titleEn: "Bilingual Teaching Strategies for Deaf Children",
+            subheadings: [
+              "4.1 Principles of developing language and early language acquisition.",
+              "4.2 Methods of teaching language: Natural, Structural and Combined.",
+              "4.3 Techniques of teaching language.",
+              "4.4 Maxims of teaching language.",
+              "4.5 Tuning the environment (home and school) for facilitating language and communication."
+            ],
+            modulePath: null
+          },
+          {
+            num: "5",
+            unitLabel: "Unit 5",
+            titleEn: "Educational Intervention Strategies",
+            subheadings: [
+              "5.1 Educational Intervention: Concept, Need & Areas (curricular & co-curricular)",
+              "5.2 Types of educational intervention (group, individual, developmental, remedial).",
+              "5.3 Principles and practices in early educational intervention: Family centred, contextualized (natural & inclusive environment) & integrated (collaborative) support and services.",
+              "5.4 Partnership of various professionals & agencies in educational intervention.",
+              "5.5 Child & Family Outcomes of Early Educational Intervention."
+            ],
+            modulePath: null
+          }
+        ]
+      },
+      {
+        id: "Practicum",
+        category: "practicum",
+        titleEn: "Practicum: Area E1 (HI) & Area E2 (HI)",
+        titleMl: "Practicum: Area E1 (HI) & Area E2 (HI)",
+        hoursEn: "240 Hours • 8 Credits • 200 Marks",
+        hoursMl: "240 മണിക്കൂർ • 8 ക്രെഡിറ്റ് • 200 മാർക്ക്",
+        modelExamIso: "2026-11-12T10:00:00+05:30",
+        modelExamDisplayMl: "ഇന്റേണൽ സബ്മിഷൻ & പ്രാക്ടിക്കൽ",
+        modelExamDisplayEn: "Internal Practical Submission",
+        uniExamIso: "2026-11-25T16:00:00+05:30",
+        uniExamDisplayMl: "സെമസ്റ്റർ 1 പ്രാക്ടിക്കൽ മൂല്യനിർണ്ണയം",
+        uniExamDisplayEn: "Semester 1 Practical Evaluation",
+        units: [
+          {
+            num: "E1",
+            unitLabel: "Area E1 (HI)",
+            titleEn: "Visits & Writing Reports",
+            subheadings: [
+              "1. Visits to special schools/ Deaf Associations/Training Centres which use Educational Bilingualism, Total Communication, Oral-aural approach",
+              "2. Visit to speech and hearing center/clinic"
+            ],
+            modulePath: null
+          },
+          {
+            num: "E2",
+            unitLabel: "Area E2 (HI)",
+            titleEn: "Micro Teaching & Classroom Observation at Different Levels and of Different Subjects",
+            subheadings: [
+              "1. Practicing and performing Micro teaching skills and link practice.",
+              "2. Classroom teaching observation at different levels and of different subjects using : Educational Bilingualism, Total Communication, Oral-aural approach"
+            ],
+            modulePath: null
+          }
+        ]
+      }
+    ];
+
+    // =====================================================================
+    // 2. OFFICIAL 30-STUDENT CLASS ROSTER — B.Ed. SPECIAL EDUCATION (HI)
+    // =====================================================================
+    const DEFAULT_CLASS_ROSTER = [
+      { roll: "01", name: "Ancelin Merin Joy" },
+      { roll: "02", name: "Ardra S. Prakash" },
+      { roll: "03", name: "Aswathy E." },
+      { roll: "04", name: "Aswathy K." },
+      { roll: "05", name: "Athira K." },
+      { roll: "06", name: "Aysha Navala C." },
+      { roll: "07", name: "Dilna Divakaran" },
+      { roll: "08", name: "Diya Fathima" },
+      { roll: "09", name: "Farisa N." },
+      { roll: "10", name: "Fida Fathima" },
+      { roll: "11", name: "Greena P." },
+      { roll: "12", name: "Joslet PJ" },
+      { roll: "13", name: "Justin George" },
+      { roll: "14", name: "Manju Thilakan" },
+      { roll: "15", name: "Mariyam Shibla K. V." },
+      { roll: "16", name: "Muhammed Fasal K. P." },
+      { roll: "17", name: "Muhammed Sabeer P." },
+      { roll: "18", name: "Muhsina R. K." },
+      { roll: "19", name: "Nima K. V." },
+      { roll: "20", name: "Rahna P. B." },
+      { roll: "21", name: "Remitha Roshin" },
+      { roll: "22", name: "Rukkiya Rumeiza" },
+      { roll: "23", name: "Saythya Karthika M." },
+      { roll: "24", name: "Shada P. K." },
+      { roll: "25", name: "Shafna P." },
+      { roll: "26", name: "Shibila Sherin K." },
+      { roll: "27", name: "Shilpa P. K." },
+      { roll: "28", name: "Shinfa Sherin M. K." },
+      { roll: "29", name: "Taradevi T. R." },
+      { roll: "30", name: "Zaina Murshida P." }
+    ];
+
+    // =====================================================================
+    // 3. STATE MANAGEMENT & PERSISTENT INDEXED-DB HTML STORAGE ENGINE
+    // =====================================================================
+    const STORAGE_META_KEY = 'jpj_portal_html_meta_v3';
+    const STORAGE_FONT_KEY = 'jpj_portal_fontsize_22_v3';
+    const IDB_NAME = 'jpj_bed_portal_idb_v3';
+    const IDB_STORE = 'html_study_modules';
+
+    let currentLang = localStorage.getItem('jpj_portal_lang') || 'ml';
+    let currentFilter = 'all';
+    // Font size strictly matches A1_U1_Study_Hub.html: 16px min, 22px default/normal, 34px max
+    let currentFontSize = parseInt(localStorage.getItem(STORAGE_FONT_KEY) || '22', 10);
+    if (isNaN(currentFontSize) || currentFontSize < 16 || currentFontSize > 34) currentFontSize = 22;
+
+    let activeReaderPath = '';
+    let activeReaderBlobUrl = '';
+    let pendingStudentSelection = null;
+    let failedAdminAttempts = 0;
+
+    // In-memory cache of uploaded HTML content keyed by `${courseId}_${unitNum}`
+    const UPLOADED_HTML_CACHE = {};
+
+    function openPortalIdb() {
+      return new Promise((resolve, reject) => {
+        if (!window.indexedDB) {
+          resolve(null);
+          return;
+        }
+        const req = indexedDB.open(IDB_NAME, 1);
+        req.onupgradeneeded = (ev) => {
+          const db = ev.target.result;
+          if (!db.objectStoreNames.contains(IDB_STORE)) {
+            db.createObjectStore(IDB_STORE);
+          }
+        };
+        req.onsuccess = (ev) => resolve(ev.target.result);
+        req.onerror = () => resolve(null);
+      });
+    }
+
+    async function saveHtmlToIdb(key, htmlContent) {
+      UPLOADED_HTML_CACHE[key] = htmlContent;
+      const db = await openPortalIdb();
+      if (!db) return;
+      return new Promise((resolve) => {
+        try {
+          const tx = db.transaction(IDB_STORE, 'readwrite');
+          tx.objectStore(IDB_STORE).put(htmlContent, key);
+          tx.oncomplete = () => resolve(true);
+          tx.onerror = () => resolve(false);
+        } catch (e) {
+          resolve(false);
+        }
+      });
+    }
+
+    async function deleteHtmlFromIdb(key) {
+      delete UPLOADED_HTML_CACHE[key];
+      const db = await openPortalIdb();
+      if (!db) return;
+      return new Promise((resolve) => {
+        try {
+          const tx = db.transaction(IDB_STORE, 'readwrite');
+          tx.objectStore(IDB_STORE).delete(key);
+          tx.oncomplete = () => resolve(true);
+          tx.onerror = () => resolve(false);
+        } catch (e) {
+          resolve(false);
+        }
+      });
+    }
+
+    async function loadAllHtmlFromIdb() {
+      // First load any baked-in modules if exported
+      const embedded = window.JPJ_EMBEDDED_MODULES || {};
+      Object.keys(embedded).forEach((k) => {
+        if (embedded[k]) {
+          try {
+            UPLOADED_HTML_CACHE[k] = decodeBase64Utf8(embedded[k]);
+          } catch (e) {}
+        }
+      });
+
+      const db = await openPortalIdb();
+      if (!db) return;
+      return new Promise((resolve) => {
+        try {
+          const tx = db.transaction(IDB_STORE, 'readonly');
+          const store = tx.objectStore(IDB_STORE);
+          const req = store.openCursor();
+          req.onsuccess = (ev) => {
+            const cursor = ev.target.result;
+            if (cursor) {
+              UPLOADED_HTML_CACHE[cursor.key] = cursor.value;
+              cursor.continue();
+            } else {
+              resolve(true);
+            }
+          };
+          req.onerror = () => resolve(false);
+        } catch (e) {
+          resolve(false);
+        }
+      });
+    }
+
+    function getCustomResources() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_META_KEY) || '{}');
+      } catch (e) {
+        return {};
+      }
+    }
+
+    function hasUnitStudyMaterial(courseId, unitNum, unitObj, customRes) {
+      const key = `${courseId}_${unitNum}`;
+      const cust = customRes[key] || {};
+      const embedded = window.JPJ_EMBEDDED_MODULES || {};
+      return Boolean(
+        UPLOADED_HTML_CACHE[key] ||
+        embedded[key] ||
+        cust.hasHtml ||
+        cust.modulePath ||
+        (unitObj && unitObj.modulePath)
+      );
+    }
+
+    function getClassRoster() {
+      try {
+        const saved = localStorage.getItem('jpj_class_roster_v2');
+        return saved ? JSON.parse(saved) : DEFAULT_CLASS_ROSTER;
+      } catch (e) {
+        return DEFAULT_CLASS_ROSTER;
+      }
+    }
+
+    // =====================================================================
+    // 4. TOP-LEFT MENU DRAWER & BOTTOM-RIGHT TOOLS POPUP (A1_U1_HUB STYLE)
+    // =====================================================================
+    function toggleTopDrawer() {
+      const drawer = document.getElementById('topDrawerPanel');
+      const btn = document.getElementById('topMenuBtn');
+      const isOpen = drawer.classList.toggle('open');
+      btn.classList.toggle('active', isOpen);
+      btn.textContent = isOpen ? '✕ Close' : '☰ Menu';
+    }
+
+    function toggleBottomTools() {
+      const popup = document.getElementById('bottomToolsPopup');
+      const btn = document.getElementById('bottomToolsBtn');
+      const isOpen = popup.classList.toggle('open');
+      btn.classList.toggle('active', isOpen);
+      btn.textContent = isOpen ? '✕ Close' : '⚙️ Tools';
+    }
+
+    function renderTopDrawerNavigation() {
+      const box = document.getElementById('topDrawerDynamicContent');
+      if (!box) return;
+      const customRes = getCustomResources();
+
+      box.innerHTML = COURSES_DB.map((course) => {
+        return `
+          <div class="drawer-course-group">
+            <div class="drawer-course-title" onclick="jumpToCourseUnit('${course.id}', null)">
+              <span>${course.id}: ${course.titleEn}</span>
+            </div>
+            <div class="nav-tabs">
+              ${course.units.map((u) => {
+                const isReady = hasUnitStudyMaterial(course.id, u.num, u, customRes);
+                return `
+                  <button class="tab-btn ${isReady ? 'active' : ''}" onclick="jumpToCourseUnit('${course.id}', '${u.num}')">
+                    <span>${u.unitLabel}: ${u.titleEn}</span>
+                    ${isReady ? '<span>📖</span>' : ''}
+                  </button>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function jumpToCourseUnit(courseId, unitNum) {
+      const drawer = document.getElementById('topDrawerPanel');
+      const btn = document.getElementById('topMenuBtn');
+      if (drawer && drawer.classList.contains('open')) {
+        drawer.classList.remove('open');
+        if (btn) {
+          btn.classList.remove('active');
+          btn.textContent = '☰ Menu';
+        }
+      }
+
+      if (currentFilter !== 'all') {
+        currentFilter = 'all';
+        document.querySelectorAll('.controls-bar .filter-pill').forEach((b, idx) => {
+          b.classList.toggle('active', idx === 0);
+        });
+        renderSubjectsStream();
+      }
+
+      const card = document.getElementById(`subjCard_${courseId}`);
+      if (card) {
+        card.classList.add('expanded');
+        if (unitNum) {
+          const unitEl = document.getElementById(`unitTile_${courseId}_${unitNum}`);
+          if (unitEl) {
+            setTimeout(() => unitEl.scrollIntoView({ behavior: 'smooth', block: 'center' }), 60);
+            return;
+          }
+        }
+        card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    // =====================================================================
+    // 5. RENDER SUBJECTS & UNITS STREAM (VERBATIM SYLLABUS + CONDITIONAL BTN)
+    // =====================================================================
+    function renderSubjectsStream() {
+      const container = document.getElementById('subjectsStreamContainer');
+      const query = (document.getElementById('portalSearchInput').value || '').trim().toLowerCase();
+      const customRes = getCustomResources();
+
+      let list = COURSES_DB.filter(c => {
+        if (currentFilter === 'core') return c.category === 'core';
+        if (currentFilter === 'hi') return c.category === 'hi';
+        if (currentFilter === 'practicum') return c.category === 'practicum';
+        return true;
+      });
+
+      if (currentFilter === 'ready') {
+        list = list.map(c => {
+          const readyUnits = c.units.filter(u => hasUnitStudyMaterial(c.id, u.num, u, customRes));
+          return { ...c, units: readyUnits, forceOpen: true };
+        }).filter(c => c.units.length > 0);
+      }
+
+      if (query) {
+        list = list.map(c => {
+          const courseMatch = c.id.toLowerCase().includes(query) ||
+                              c.titleEn.toLowerCase().includes(query);
+          const matchedUnits = c.units.filter(u =>
+            courseMatch ||
+            u.unitLabel.toLowerCase().includes(query) ||
+            u.titleEn.toLowerCase().includes(query) ||
+            u.subheadings.some(sh => sh.toLowerCase().includes(query))
+          );
+          return { ...c, units: matchedUnits, forceOpen: true };
+        }).filter(c => c.units.length > 0);
+      }
+
+      if (list.length === 0) {
+        container.innerHTML = `
+          <div class="subject-card" style="text-align:center; padding:2.5rem 1rem;">
+            <h3>${currentLang === 'ml'
+              ? (currentFilter === 'ready' ? 'നിലവിൽ സ്റ്റഡി മെറ്റീരിയലുകൾ ഒന്നും ചേർത്തിട്ടില്ല' : 'തിരയുന്ന വിവരങ്ങൾ കണ്ടെത്താനായില്ല')
+              : (currentFilter === 'ready' ? 'No Study Materials Uploaded Yet' : 'No matching units found')}</h3>
+            <p style="color:var(--text-muted); margin-top:0.4rem; font-size:0.8rem;">
+              ${currentLang === 'ml'
+                ? (currentFilter === 'ready' ? 'അഡ്മിൻ ലോഗിൻ വഴി HTML സ്റ്റഡി ഫയലുകൾ ചേർക്കുമ്പോൾ അവ ഇവിടെ കാണാം.' : 'മറ്റൊരു വാക്ക് ഉപയോഗിച്ച് തിരയുക (ഉദാ: A1, B1, Piaget, RPwD).')
+                : (currentFilter === 'ready' ? 'Use Admin Login to upload HTML study files to any unit.' : 'Try searching for A1, B1, Piaget, or RPwD.')}
+            </p>
+          </div>
+        `;
+        renderTopDrawerNavigation();
+        return;
+      }
+
+      container.innerHTML = list.map((course, idx) => {
+        const isOpen = (idx === 0 || course.forceOpen) ? 'expanded' : '';
+        const mainTitle = course.titleEn;
+        const subTitle = currentLang === 'ml' ? course.hoursMl : course.hoursEn;
+        const cdBtnLabel = currentLang === 'ml' ? '📅 പരീക്ഷാ കൗണ്ട്ഡൗൺ' : '📅 Exam Countdown';
+
+        return `
+          <article class="subject-card ${isOpen}" id="subjCard_${course.id}">
+            <div class="subject-header" onclick="toggleSubjectCard('${course.id}', event)">
+              <div style="flex:1;">
+                <div class="subject-meta-row">
+                  <span class="code-pill">${course.id}</span>
+                  <span style="font-size:0.72rem; color:var(--text-muted); font-weight:700;">${subTitle}</span>
+                  <button class="exam-countdown-chip" onclick="openCourseScheduleModal('${course.id}', event)">
+                    ${cdBtnLabel}
+                  </button>
+                </div>
+                <h2 class="subject-title-main">${mainTitle}</h2>
+                <div class="subject-title-sub">
+                  ${currentLang === 'ml'
+                    ? `മോഡൽ പരീക്ഷ: ${course.modelExamDisplayMl} • യൂണിവേഴ്സിറ്റി പരീക്ഷ: ${course.uniExamDisplayMl}`
+                    : `Model Exam: ${course.modelExamDisplayEn} • University Exam: ${course.uniExamDisplayEn}`}
+                </div>
+              </div>
+              <div class="expand-circle" aria-label="Expand or Collapse">▼</div>
+            </div>
+
+            <div class="units-drawer">
+              <div class="units-grid">
+                ${course.units.map(u => {
+                  const key = `${course.id}_${u.num}`;
+                  const cust = customRes[key] || {};
+                  const modPath = cust.modulePath || u.modulePath || '';
+                  const hasMaterial = hasUnitStudyMaterial(course.id, u.num, u, customRes);
+
+                  return `
+                    <div class="unit-tile" id="unitTile_${course.id}_${u.num}">
+                      <div>
+                        <div class="unit-tile-top">
+                          <span class="unit-num-tag">${u.unitLabel}</span>
+                          ${hasMaterial ? `<span class="status-pill ready">✓ Study Material Ready</span>` : ''}
+                        </div>
+                        <h3 class="unit-tile-title" style="margin-top:0.35rem;">${u.unitLabel}: ${u.titleEn}</h3>
+                      </div>
+
+                      <div class="unit-topics-list">
+                        ${u.subheadings.map(sh => `<span class="subtopic-line">${sh}</span>`).join('')}
+                      </div>
+
+                      ${hasMaterial ? `
+                        <div class="unit-actions-row">
+                          <button class="res-btn module-ready"
+                            onclick="launchStudyReader('${course.id}', '${u.num}', '${modPath.replace(/'/g, "\\'")}', '${u.titleEn.replace(/'/g, "\\'")}')">
+                            📖 Open Study Material
+                          </button>
+                        </div>
+                      ` : ''}
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      renderTopDrawerNavigation();
+    }
+
+    function toggleSubjectCard(courseId, ev) {
+      if (ev && ev.target.closest('.exam-countdown-chip')) return;
+      const el = document.getElementById(`subjCard_${courseId}`);
+      if (el) el.classList.toggle('expanded');
+    }
+
+    function expandAllSubjects() {
+      document.querySelectorAll('.subject-card').forEach(el => el.classList.add('expanded'));
+    }
+
+    function setCategoryFilter(filter, btn) {
+      currentFilter = filter;
+      document.querySelectorAll('.controls-bar .filter-pill').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      renderSubjectsStream();
+    }
+
+    // =====================================================================
+    // 6. SEAMLESS HTML STUDY MATERIAL READER ENGINE
+    // =====================================================================
+    function decodeBase64Utf8(b64) {
+      const binStr = atob(b64);
+      const bytes = new Uint8Array(binStr.length);
+      for (let i = 0; i < binStr.length; i++) bytes[i] = binStr.charCodeAt(i);
+      return new TextDecoder('utf-8').decode(bytes);
+    }
+
+    function encodeUtf8Base64(str) {
+      const bytes = new TextEncoder().encode(str);
+      let bin = '';
+      for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+      return btoa(bin);
+    }
+
+    function launchStudyReader(courseId, unitNum, path, title) {
+      const key = `${courseId}_${unitNum}`;
+      const embedded = window.JPJ_EMBEDDED_MODULES || {};
+      const htmlContent = UPLOADED_HTML_CACHE[key] || (embedded[key] ? decodeBase64Utf8(embedded[key]) : null);
+
+      if (!htmlContent && !path) return;
+
+      activeReaderPath = path || '';
+      if (activeReaderBlobUrl) {
+        URL.revokeObjectURL(activeReaderBlobUrl);
+        activeReaderBlobUrl = '';
+      }
+
+      document.getElementById('readerActiveTitle').textContent = `${courseId} • Unit ${unitNum}: ${title}`;
+      const iframe = document.getElementById('studyReaderIframe');
+
+      if (htmlContent) {
+        const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+        activeReaderBlobUrl = URL.createObjectURL(blob);
+        iframe.removeAttribute('srcdoc');
+        iframe.src = activeReaderBlobUrl;
+      } else {
+        iframe.removeAttribute('srcdoc');
+        iframe.src = path;
+      }
+
+      document.getElementById('studyReaderOverlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeStudyReader() {
+      document.getElementById('studyReaderOverlay').classList.remove('active');
+      const iframe = document.getElementById('studyReaderIframe');
+      iframe.removeAttribute('srcdoc');
+      iframe.src = 'about:blank';
+      document.body.style.overflow = '';
+    }
+
+    function openActiveResourceNewTab() {
+      if (activeReaderBlobUrl) {
+        window.open(activeReaderBlobUrl, '_blank');
+      } else if (activeReaderPath) {
+        window.open(activeReaderPath, '_blank');
+      }
+    }
+
+    function printActiveReaderFrame() {
+      const iframe = document.getElementById('studyReaderIframe');
+      try {
+        if (iframe && iframe.contentWindow) {
+          iframe.contentWindow.focus();
+          iframe.contentWindow.print();
+          return;
+        }
+      } catch (e) {}
+      if (activeReaderBlobUrl) window.open(activeReaderBlobUrl, '_blank');
+      else if (activeReaderPath) window.open(activeReaderPath, '_blank');
+    }
+
+    // =====================================================================
+    // 7. PER-SUBJECT & FULL EXAM SCHEDULE COUNTDOWN MODAL
+    // =====================================================================
+    function formatRemainingTime(isoStr) {
+      const diff = new Date(isoStr).getTime() - Date.now();
+      if (diff <= 0) {
+        return currentLang === 'ml' ? 'പരീക്ഷാ സമയം ആരംഭിച്ചു / പൂർത്തിയായി' : 'Exam Started / Completed';
+      }
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      return currentLang === 'ml'
+        ? `⏳ ${d} ദിവസം, ${h} മണിക്കൂർ, ${m} മിനിറ്റ് ബാക്കി`
+        : `⏳ ${d} Days, ${h} Hours, ${m} Mins remaining`;
+    }
+
+    function openCourseScheduleModal(courseId, ev) {
+      if (ev) ev.stopPropagation();
+      const course = COURSES_DB.find(c => c.id === courseId);
+      if (!course) return;
+
+      document.getElementById('scheduleModalHeading').textContent =
+        `📅 ${course.id}: ${course.titleEn} — Exam Countdown`;
+
+      document.getElementById('scheduleModalContent').innerHTML = `
+        <div style="display:flex; flex-direction:column; gap:0.85rem;">
+          <div style="padding:1rem; background:var(--bg-elevated); border-left:4px solid var(--accent-gold); border-radius:12px;">
+            <div style="font-size:12px; font-weight:800; color:var(--accent-gold); text-transform:uppercase;">
+              1. First Semester Model Examination
+            </div>
+            <div style="font-size:16px; font-weight:800; margin-top:0.25rem;">
+              ${currentLang === 'ml' ? course.modelExamDisplayMl : course.modelExamDisplayEn}
+            </div>
+            <div style="font-size:14px; font-weight:800; color:var(--accent-cyan); margin-top:0.35rem;">
+              ${formatRemainingTime(course.modelExamIso)}
+            </div>
+          </div>
+
+          <div style="padding:1rem; background:var(--bg-elevated); border-left:4px solid var(--accent-emerald); border-radius:12px;">
+            <div style="font-size:12px; font-weight:800; color:var(--accent-emerald); text-transform:uppercase;">
+              2. Calicut University Final Examination
+            </div>
+            <div style="font-size:16px; font-weight:800; margin-top:0.25rem;">
+              ${currentLang === 'ml' ? course.uniExamDisplayMl : course.uniExamDisplayEn}
+            </div>
+            <div style="font-size:14px; font-weight:800; color:var(--accent-cyan); margin-top:0.35rem;">
+              ${formatRemainingTime(course.uniExamIso)}
+            </div>
+          </div>
+
+          <button class="top-btn" style="justify-content:center; padding:0.6rem; font-size:14px;" onclick="openTimetableModal()">
+            📋 ${currentLang === 'ml' ? 'എല്ലാ 6 പരീക്ഷകളുടെയും പൂർണ്ണ ടൈംടേബിൾ കാണുക' : 'View Full 6-Paper Exam Timetable'}
+          </button>
+        </div>
+      `;
+      document.getElementById('timetableModal').classList.add('active');
+    }
+
+    function openTimetableModal() {
+      document.getElementById('scheduleModalHeading').textContent =
+        currentLang === 'ml'
+          ? '📅 B.Ed. Special Education (HI) — പൂർണ്ണ പരീക്ഷാ ടൈംടേബിളും കൗണ്ട്ഡൗണും'
+          : '📅 B.Ed. Special Education (HI) — Complete Exam Schedule & Countdowns';
+
+      const theoryCourses = COURSES_DB.filter(c => c.id !== 'Practicum');
+      document.getElementById('scheduleModalContent').innerHTML = `
+        <div style="display:flex; flex-direction:column; gap:0.75rem;">
+          ${theoryCourses.map(c => `
+            <div style="padding:0.85rem; background:var(--bg-elevated); border:1px solid var(--border-subtle); border-radius:12px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.4rem;">
+                <strong style="color:var(--accent-gold);">${c.id}: ${c.titleEn}</strong>
+              </div>
+              <div style="font-size:13.5px; margin-top:0.4rem;">
+                • <strong>Model Exam:</strong> ${currentLang === 'ml' ? c.modelExamDisplayMl : c.modelExamDisplayEn}
+                <span style="color:var(--accent-cyan); font-weight:700;">(${formatRemainingTime(c.modelExamIso)})</span>
+              </div>
+              <div style="font-size:13.5px; margin-top:0.2rem;">
+                • <strong>University Exam:</strong> ${currentLang === 'ml' ? c.uniExamDisplayMl : c.uniExamDisplayEn}
+                <span style="color:var(--accent-emerald); font-weight:700;">(${formatRemainingTime(c.uniExamIso)})</span>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+      document.getElementById('timetableModal').classList.add('active');
+    }
+
+    function closeTimetableModal() {
+      document.getElementById('timetableModal').classList.remove('active');
+    }
+
+    // =====================================================================
+    // 8. STUDENT IDENTITY & ROSTER LOGIN SYSTEM ("Hi, [Name]")
+    // =====================================================================
+    function updateStudentGreetingUI() {
+      const savedName = localStorage.getItem('jpj_student_name');
+      const savedRoll = localStorage.getItem('jpj_student_roll');
+      const label = document.getElementById('studentGreetingText');
+      if (savedName) {
+        label.textContent = savedRoll ? `Hi, ${savedName} (#${savedRoll})` : `Hi, ${savedName}!`;
+      } else {
+        label.textContent = currentLang === 'ml' ? 'Hi! നിങ്ങളുടെ പേര് തിരഞ്ഞെടുക്കുക' : 'Hi, Scholar! (Select Name)';
+      }
+    }
+
+    function openStudentLoginModal() {
+      document.getElementById('rollVerifyBox').style.display = 'none';
+      renderStudentRosterGrid();
+      document.getElementById('studentLoginModal').classList.add('active');
+    }
+
+    function closeStudentLoginModal() {
+      document.getElementById('studentLoginModal').classList.remove('active');
+    }
+
+    function renderStudentRosterGrid() {
+      const grid = document.getElementById('studentRosterGrid');
+      const q = (document.getElementById('studentFilterInput').value || '').trim().toLowerCase();
+      const roster = getClassRoster();
+      const currentName = localStorage.getItem('jpj_student_name') || '';
+
+      const filtered = roster.filter(s =>
+        s.name.toLowerCase().includes(q) || String(s.roll).toLowerCase().includes(q)
+      );
+
+      grid.innerHTML = filtered.map((s) => `
+        <button class="student-select-btn ${s.name === currentName ? 'selected' : ''}"
+          onclick="selectStudentFromRoster('${s.roll.replace(/'/g, "\\'")}', '${s.name.replace(/'/g, "\\'")}')">
+          <span class="student-roll-small">Roll No: ${s.roll}</span>
+          <span>${s.name}</span>
+        </button>
+      `).join('');
+    }
+
+    function selectStudentFromRoster(roll, name) {
+      const requirePin = localStorage.getItem('jpj_require_roll_pin') === 'true';
+      if (requirePin) {
+        pendingStudentSelection = { roll, name };
+        document.getElementById('selectedStudentPrompt').textContent = `Enter Roll Number for ${name}:`;
+        document.getElementById('studentRollInput').value = '';
+        document.getElementById('rollVerifyBox').style.display = 'block';
+        return;
+      }
+      localStorage.setItem('jpj_student_name', name);
+      localStorage.setItem('jpj_student_roll', roll);
+      updateStudentGreetingUI();
+      closeStudentLoginModal();
+    }
+
+    function confirmStudentRollLogin() {
+      if (!pendingStudentSelection) return;
+      const entered = (document.getElementById('studentRollInput').value || '').trim();
+      if (entered === pendingStudentSelection.roll || entered === String(parseInt(pendingStudentSelection.roll, 10))) {
+        localStorage.setItem('jpj_student_name', pendingStudentSelection.name);
+        localStorage.setItem('jpj_student_roll', pendingStudentSelection.roll);
+        updateStudentGreetingUI();
+        closeStudentLoginModal();
+      } else {
+        alert(currentLang === 'ml' ? 'റോൾ നമ്പർ തെറ്റാണ്. വീണ്ടും ശ്രമിക്കുക.' : 'Incorrect Roll Number.');
+      }
+    }
+
+    function saveManualStudentName() {
+      const val = (document.getElementById('customStudentNameInput').value || '').trim();
+      if (!val) return;
+      localStorage.setItem('jpj_student_name', val);
+      localStorage.removeItem('jpj_student_roll');
+      updateStudentGreetingUI();
+      closeStudentLoginModal();
+    }
+
+    // =====================================================================
+    // 9. ADMIN SECURITY GATE (STRONG LONG PASSWORD: JosletPJ#BEdSplEd@2026!)
+    // =====================================================================
+    const ADMIN_STRONG_PASSWORD_PRIMARY = 'JosletPJ#BEdSplEd@2026!';
+    const ADMIN_STRONG_PASSWORD_ALT = 'JpJ#9$vK2!mX7@qL4&zR';
+
+    function checkStrongCode(input) {
+      const customCode = localStorage.getItem('jpj_custom_master_code_v3');
+      if (customCode) return input === customCode;
+      return input === ADMIN_STRONG_PASSWORD_PRIMARY || input === ADMIN_STRONG_PASSWORD_ALT;
+    }
+
+    function syncAdminUnitOptions() {
+      const courseVal = document.getElementById('admCourseSelect').value;
+      const unitSelect = document.getElementById('admUnitSelect');
+      if (!unitSelect) return;
+      const courseObj = COURSES_DB.find(c => c.id === courseVal);
+      if (!courseObj) return;
+
+      unitSelect.innerHTML = courseObj.units.map(u =>
+        `<option value="${u.num}">${u.unitLabel}: ${u.titleEn}</option>`
+      ).join('');
+    }
+
+    function openAdminGateModal() {
+      document.getElementById('adminPassInput').value = '';
+      document.getElementById('adminAuthError').style.display = 'none';
+      document.getElementById('adminAuthView').style.display = 'block';
+      document.getElementById('adminUnlockedView').style.display = 'none';
+      syncAdminUnitOptions();
+      document.getElementById('adminGateModal').classList.add('active');
+      setTimeout(() => document.getElementById('adminPassInput').focus(), 60);
+    }
+
+    function closeAdminGateModal() {
+      document.getElementById('adminGateModal').classList.remove('active');
+    }
+
+    function verifyAdminAccess() {
+      if (failedAdminAttempts >= 5) {
+        const err = document.getElementById('adminAuthError');
+        err.textContent = 'Too many failed attempts. Temporarily locked for security.';
+        err.style.display = 'block';
+        return;
+      }
+
+      const code = (document.getElementById('adminPassInput').value || '').trim();
+      if (checkStrongCode(code)) {
+        failedAdminAttempts = 0;
+        document.getElementById('adminAuthView').style.display = 'none';
+        document.getElementById('adminUnlockedView').style.display = 'block';
+        populateAdminRosterTextarea();
+      } else {
+        failedAdminAttempts++;
+        const err = document.getElementById('adminAuthError');
+        err.textContent = `Access Denied. Invalid Admin Password (${5 - failedAdminAttempts} attempts left).`;
+        err.style.display = 'block';
+      }
+    }
+
+    function switchAdminTab(tab) {
+      document.getElementById('admTabResBtn').classList.toggle('active', tab === 'resource');
+      document.getElementById('admTabRosterBtn').classList.toggle('active', tab === 'roster');
+      document.getElementById('adminResourcePanel').style.display = tab === 'resource' ? 'block' : 'none';
+      document.getElementById('adminRosterPanel').style.display = tab === 'roster' ? 'block' : 'none';
+    }
+
+    let pendingUploadedHtmlText = null;
+    let pendingUploadedFileName = '';
+
+    function handleAdminFileSelect(ev) {
+      const file = ev.target.files[0];
+      if (!file) return;
+      if (!file.name.toLowerCase().endsWith('.html') && !file.name.toLowerCase().endsWith('.htm')) {
+        alert('ദയവായി HTML ഫയലുകൾ (.html / .htm) മാത്രം തിരഞ്ഞെടുക്കുക.');
+        ev.target.value = '';
+        return;
+      }
+      pendingUploadedFileName = file.name;
+      document.getElementById('admPickedFileName').textContent = `⏳ Reading ${file.name}...`;
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        pendingUploadedHtmlText = e.target.result;
+        document.getElementById('admPickedFileName').textContent =
+          `✅ Ready: ${file.name} (${Math.max(1, Math.round(file.size / 1024))} KB)`;
+      };
+      reader.onerror = () => {
+        pendingUploadedHtmlText = null;
+        alert('Error reading HTML file.');
+      };
+      reader.readAsText(file, 'UTF-8');
+    }
+
+    async function saveAdminResource() {
+      const course = document.getElementById('admCourseSelect').value;
+      const unit = document.getElementById('admUnitSelect').value;
+      const typedPath = (document.getElementById('admPathInput').value || '').trim();
+
+      if (!pendingUploadedHtmlText && !typedPath) {
+        alert('ദയവായി ഒരു HTML സ്റ്റഡി ഫയൽ (.html) തിരഞ്ഞെടുക്കുക.');
+        return;
+      }
+
+      const key = `${course}_${unit}`;
+      const customRes = getCustomResources();
+      if (!customRes[key]) customRes[key] = {};
+
+      if (pendingUploadedHtmlText) {
+        await saveHtmlToIdb(key, pendingUploadedHtmlText);
+        customRes[key].hasHtml = true;
+        customRes[key].fileName = pendingUploadedFileName;
+        customRes[key].modulePath = typedPath || pendingUploadedFileName;
+      } else if (typedPath) {
+        customRes[key].modulePath = typedPath;
+      }
+
+      localStorage.setItem(STORAGE_META_KEY, JSON.stringify(customRes));
+      pendingUploadedHtmlText = null;
+      pendingUploadedFileName = '';
+      document.getElementById('admFilePicker').value = '';
+      document.getElementById('admPathInput').value = '';
+      document.getElementById('admPickedFileName').textContent = 'Only HTML Study Files (.html / .htm)';
+
+      renderSubjectsStream();
+      closeAdminGateModal();
+
+      // Expand the course card and scroll to the updated unit so the user immediately sees the Open Study Material button
+      const card = document.getElementById(`subjCard_${course}`);
+      if (card) card.classList.add('expanded');
+      alert(`✅ ${course} Unit ${unit} സ്റ്റഡി മെറ്റീരിയൽ വിജയകരമായി ചേർത്തു!`);
+    }
+
+    async function removeAdminUnitResource() {
+      const course = document.getElementById('admCourseSelect').value;
+      const unit = document.getElementById('admUnitSelect').value;
+      const key = `${course}_${unit}`;
+
+      await deleteHtmlFromIdb(key);
+      if (window.JPJ_EMBEDDED_MODULES && window.JPJ_EMBEDDED_MODULES[key]) {
+        delete window.JPJ_EMBEDDED_MODULES[key];
+      }
+      const customRes = getCustomResources();
+      if (customRes[key]) {
+        delete customRes[key];
+        localStorage.setItem(STORAGE_META_KEY, JSON.stringify(customRes));
+      }
+
+      renderSubjectsStream();
+      alert(`🗑️ Removed HTML Study Material from ${course} Unit ${unit}.`);
+    }
+
+    function exportStandalonePortalWithModules() {
+      const mergedEmbedded = Object.assign({}, window.JPJ_EMBEDDED_MODULES || {});
+      Object.keys(UPLOADED_HTML_CACHE).forEach((k) => {
+        if (UPLOADED_HTML_CACHE[k]) {
+          mergedEmbedded[k] = encodeUtf8Base64(UPLOADED_HTML_CACHE[k]);
+        }
+      });
+
+      const scriptEl = document.getElementById('jpjEmbeddedModulesScript');
+      if (scriptEl) {
+        scriptEl.textContent = `\n    window.JPJ_EMBEDDED_MODULES = ${JSON.stringify(mergedEmbedded, null, 2)};\n  `;
+      }
+
+      const fullHtml = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+      const blob = new Blob([fullHtml], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'BEd_Special_Education_Portal.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    function populateAdminRosterTextarea() {
+      const roster = getClassRoster();
+      document.getElementById('admRosterTextarea').value = roster.map(s => `${s.roll} - ${s.name}`).join('\n');
+      document.getElementById('requireRollPinToggle').checked = localStorage.getItem('jpj_require_roll_pin') === 'true';
+    }
+
+    function toggleRollPinRequirement() {
+      const checked = document.getElementById('requireRollPinToggle').checked;
+      localStorage.setItem('jpj_require_roll_pin', checked ? 'true' : 'false');
+    }
+
+    function saveAdminRosterList() {
+      const raw = (document.getElementById('admRosterTextarea').value || '').trim();
+      if (!raw) return;
+      const lines = raw.split('\n').map(l => l.trim()).filter(Boolean);
+      const parsed = lines.map((line, idx) => {
+        const parts = line.split('-');
+        if (parts.length >= 2) {
+          return { roll: parts[0].trim(), name: parts.slice(1).join('-').trim() };
+        }
+        return { roll: String(idx + 1).padStart(2, '0'), name: line };
+      });
+      localStorage.setItem('jpj_class_roster_v2', JSON.stringify(parsed));
+      alert(`✅ Saved ${parsed.length} students to Class Roster!`);
+      closeAdminGateModal();
+    }
+
+    // =====================================================================
+    // 10. LANGUAGE, THEME & FONT SIZE ACCESSIBILITY ENGINE (16px–34px, 22px DEFAULT)
+    // =====================================================================
+    function applyLanguageUI() {
+      document.documentElement.lang = currentLang === 'ml' ? 'ml' : 'en';
+      document.getElementById('topLangLabel').textContent = currentLang === 'ml' ? 'English' : 'മലയാളം';
+      document.getElementById('bottomLangBtn').textContent = currentLang === 'ml' ? '🌐 English' : '🌐 മലയാളം';
+
+      document.getElementById('portalMainHeading').textContent =
+        currentLang === 'ml'
+          ? 'B.Ed. Special Education — സെമസ്റ്റർ 1 സ്റ്റഡി പോർട്ടൽ'
+          : 'B.Ed. Special Education — Sem 1 Digital Academy';
+
+      document.getElementById('portalSearchInput').placeholder =
+        currentLang === 'ml'
+          ? 'വിഷയം, യൂണിറ്റ്, അല്ലെങ്കിൽ ടോപ്പിക് തിരയുക (e.g. Piaget, RPwD, A1, Audiogram)...'
+          : 'Search by course, unit, or topic (e.g. Piaget, RPwD, A1, Audiogram)...';
+
+      document.querySelectorAll('[data-ml][data-en]').forEach(el => {
+        el.textContent = currentLang === 'ml' ? el.getAttribute('data-ml') : el.getAttribute('data-en');
+      });
+
+      updateStudentGreetingUI();
+      renderSubjectsStream();
+    }
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'ml' ? 'en' : 'ml';
+      localStorage.setItem('jpj_portal_lang', currentLang);
+      applyLanguageUI();
+    }
+
+    function toggleThemeMode() {
+      const htmlEl = document.documentElement;
+      const next = htmlEl.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      htmlEl.setAttribute('data-theme', next);
+      localStorage.setItem('jpj_portal_theme', next);
+      document.getElementById('bottomThemeBtn').textContent = next === 'dark' ? '☀️ Light' : '🌙 Dark';
+    }
+
+    function applyFontSizeUI() {
+      document.documentElement.style.setProperty('--user-font-size', currentFontSize + 'px');
+      document.documentElement.style.setProperty('--base-size', currentFontSize + 'px');
+      const lbl = document.getElementById('fontSizeLabel');
+      if (lbl) lbl.textContent = currentFontSize + 'px';
+    }
+
+    function changeBaseFontSize(delta) {
+      if (delta === 0) {
+        currentFontSize = 22;
+      } else {
+        currentFontSize = Math.min(34, Math.max(16, currentFontSize + delta));
+      }
+      localStorage.setItem(STORAGE_FONT_KEY, String(currentFontSize));
+      applyFontSizeUI();
+    }
+
+    // =====================================================================
+    // 11. DYNAMIC NEXT-EXAM LIVE COUNTDOWN TICKER
+    // =====================================================================
+    function updateHeroCountdown() {
+      const now = Date.now();
+      let upcoming = null;
+      for (const c of COURSES_DB) {
+        if (c.id === 'Practicum') continue;
+        const mTime = new Date(c.modelExamIso).getTime();
+        if (mTime > now) {
+          upcoming = {
+            titleMl: `${c.id}: ${c.titleEn} (മോഡൽ എക്സാം — ${c.modelExamDisplayMl})`,
+            titleEn: `${c.id}: ${c.titleEn} (Model Exam — ${c.modelExamDisplayEn})`,
+            targetMs: mTime
+          };
+          break;
+        }
+      }
+      if (!upcoming) {
+        for (const c of COURSES_DB) {
+          if (c.id === 'Practicum') continue;
+          const uTime = new Date(c.uniExamIso).getTime();
+          if (uTime > now) {
+            upcoming = {
+              titleMl: `${c.id}: ${c.titleEn} (യൂണിവേഴ്സിറ്റി എക്സാം — ${c.uniExamDisplayMl})`,
+              titleEn: `${c.id}: ${c.titleEn} (University Exam — ${c.uniExamDisplayEn})`,
+              targetMs: uTime
+            };
+            break;
+          }
+        }
+      }
+
+      if (!upcoming) return;
+
+      document.getElementById('cdExamName').textContent = currentLang === 'ml' ? upcoming.titleMl : upcoming.titleEn;
+      const diff = Math.max(0, upcoming.targetMs - now);
+
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById('cdDays').textContent = String(d).padStart(2, '0');
+      document.getElementById('cdHours').textContent = String(h).padStart(2, '0');
+      document.getElementById('cdMins').textContent = String(m).padStart(2, '0');
+      document.getElementById('cdSecs').textContent = String(s).padStart(2, '0');
+    }
+
+    // Initialize saved preferences & load any user-uploaded HTML modules from IndexedDB
+    (async function initPortal() {
+      const savedTheme = localStorage.getItem('jpj_portal_theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      document.getElementById('bottomThemeBtn').textContent = savedTheme === 'dark' ? '☀️ Light' : '🌙 Dark';
+      syncAdminUnitOptions();
+      applyFontSizeUI();
+      await loadAllHtmlFromIdb();
+      applyLanguageUI();
+      updateHeroCountdown();
+      setInterval(updateHeroCountdown, 1000);
+    })();
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeStudyReader();
+        closeTimetableModal();
+        closeStudentLoginModal();
+        closeAdminGateModal();
+        const drawer = document.getElementById('topDrawerPanel');
+        if (drawer && drawer.classList.contains('open')) toggleTopDrawer();
+        const tools = document.getElementById('bottomToolsPopup');
+        if (tools && tools.classList.contains('open')) toggleBottomTools();
+      }
+    });
+  </script>
+</body>
+</html>
